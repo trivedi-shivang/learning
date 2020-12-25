@@ -4,4 +4,7 @@ body{
 h1[title*="Figure"]{
     font-size:24px;
 }
-p > a:nth-of-type(even) {background: blue; color: white;}
+a:link {color: blue;}
+a:visited {color: purple;}
+a:link:hover {color: red;}
+a:visited:hover {color: gray;}
