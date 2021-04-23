@@ -1,0 +1,61 @@
+a:visited {
+    color: green;
+}
+
+a:link {
+    color: pink;
+}
+
+
+a:hover {
+    text-decoration: none;
+}
+
+h1 + p {
+    color: rebeccapurple !important;
+}
+
+/* @rules - provide instruction for what CSS should perform or how it should behave.*/
+/* Eg: @import 'styles2.css - this imports a stylesheet (styles2.css) into the current stylesheet */
+/* all (shorthand property) can be used to apply one of these inheritance values to all properties at once. */
+/* type selector/tag-name selector or element selector because it selects an HTML tag/element in your document. */
+
+/* Attribute selectors: enables selection of an element based on the presence of an attribute alone. */
+/* For Ex: a[title] or a[href="https://www.example.com"] or a[attr~=value](element with attribute "attr" having value "value" or "value" is one amongst space-separated list of attribute-values) or a[attr|=value] (similar as before but instead of being amongst space-separated list of values, the value should be immediately followed with a hyphen
+li[class^="box-"](attribute whose value begins with "box-") or li[class$="box-"] (same as before but instead of beginning it comes in the end) or li[class*="box-"](attribute who value contains (anywhere within) the word "box-"*/
+
+
+/* Pseudo classes and psuedo elements: is a seletor that selects elements that are in a specific state. */
+
+/* Some psuedo classes are only applied when user interacts with the document in some way. They are called user-action psuedo-classes or dynamic-psuedo-classes */
+
+/* psuedo elements, unlike psuedo clases behave as if a whole new HTML element has been added to the markup, rather than applying a class to existing elements. Put simply, pusedo elements target a part of the element (rather styling the whole element) */
+
+/* Block and inline boxes - defined by display property 
+ If a box is defined as a block, it will behave in the following ways: 
+    a. The box will break onta a new line.
+    b. The box will extend in the inline direction to fill the space available in its container. In most cases this means that the box will become as wide as its container, filling up 100% of the space available.
+    c. The width and height properties are respected.
+    d. Padding, margin and border will cause other elements to be pushed away from the box. */
+
+/* For box with having outer type as inline, vertical padding, margins and border changes will not affect other boxes but horizontal changes will. */
+/* In short, display property defines how an element will behave with other boxes (outer display type) as well how its children will behave with each other (inner display type).  */
+
+/* Setting a negative margin on one side of your box can cause it to overlap other things on the page. */
+
+
+/* what happens when vertical writing mode is implemented instead of horizontal. In this case if width and height are given to boxes of different writing modes, each box take equal width and height (which might cause text to overflow if the box has vertical writing mode).
+Thus, recently, CSS has developed a set of mapped properties. These properties replace physical properties. They are as follows
+
+width (physical property) -> inline-size (logical property)
+height (physical property) -> block-size (logical property) */
+
+/* similarly: 
+margin-top: margin-block-start
+padding-left: padding-inline-start */
+
+/* if you use padding-left in all writing modes, no matter what the writing mode is, the left-padding will always be on left-side. whereas, using padding-inline-start will give left most side padding in horizontal writing mode and topmost side padding in vertical writing mode */
+
+/* when you use overflow properties with a value other than visilbe, you create a block formatting context. nothing inside the container pokes outside the container and vice-versa. */
+
+/* Replaced Elements behave differently with CSS Layouts. They are not stretched like other element to fill grid-area/flex-container. Instead they aligned to the start of grid-area/flex-container. */
