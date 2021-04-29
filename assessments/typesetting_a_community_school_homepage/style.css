@@ -1,0 +1,128 @@
+/* General setup */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@400&family=Roboto+Slab:wght@100&display=swap');
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0 auto;
+    min-width: 1000px;
+    max-width: 1400px;
+  }
+  
+  /* Layout */
+  
+  section {
+    float: left;
+    width: 50%;
+  }
+  
+  aside {
+    float: left;
+    width: 30%;
+  }
+  
+  nav {
+    float: left;
+    width: 20%;
+  }
+  
+  footer {
+    clear: both;
+  }
+  
+  header, section, aside, nav, footer {
+    padding: 20px;
+  }
+  
+  /* header and footer */
+  
+  header, footer {
+    border-top: 5px solid #a66;
+    border-bottom: 5px solid #a66;
+  }
+  
+  /* WRITE YOUR CODE BELOW HERE */
+  html {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+  /* Fonts and Text styles*/
+  section, aside, nav, footer {
+    font-family: "Roboto Slab", serif;
+  }
+
+  header {
+    font-family: "Antonio", sans-serif;
+    font-size: 1.7rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+
+  h2 + p {
+    margin-left: 20px;
+  }
+
+  section, aside, nav {
+    font-size: 1.4rem;
+    letter-spacing: 0.6px;
+    word-spacing: 1px;
+  }
+
+  footer {
+    font-weight: 1.2rem;
+  }
+
+  /* Link styles */
+  a { 
+    text-decoration: none;
+    text-decoration: none;
+    outline: none;
+  }
+
+  section a, aside a {
+    border-bottom: 1px solid;
+  }
+
+  a[href^="http"] {
+    background-image: url(https://developer.mozilla.org/static/media/external.e091ac5d.svg);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-position: right center;
+    padding-right: 15px;
+  }
+  
+  a:link { 
+    color: rgb(168, 216, 34);
+  }
+
+  a:visited {
+    color: rgb(187, 118, 189);
+
+  }
+
+  a:focus {
+    border-bottom: none;
+    background-color: rgb(118, 189, 118);
+    color:white;
+  }
+
+  a:hover {
+    border-bottom: none;
+    background-color: rgb(109, 172, 109);
+    color:white;
+  }
+
+  a:active {
+    background-color: rgb(12, 143, 62);
+    color: white;
+  }
+
+  /* List styles */
+  nav ul li {
+    list-style-type: none;
+    padding: 20px;
+    border: 2px solid orange;
+    margin-bottom: 20px;
+  }

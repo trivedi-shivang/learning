@@ -1,6 +1,7 @@
 html {
     font-size: 10px;
     line-height: 1.6;
+    color: black;
 }
 
 h1 {
@@ -16,4 +17,22 @@ p {
     font-size: 1.5rem;
     color:sandybrown;
     font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+    font-size: 3rem;
+}
+
+a:link {
+    color: yellow;
+    /* background-color: saddlebrown; */
+}
+
+a:hover {
+    color:green;
+    /* background-color: red; */
+}
+
+a:visited {
+    color: red;
 }
