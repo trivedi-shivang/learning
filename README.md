@@ -1,1 +1,1 @@
-# learning
+Projects created for learning different technologies.
