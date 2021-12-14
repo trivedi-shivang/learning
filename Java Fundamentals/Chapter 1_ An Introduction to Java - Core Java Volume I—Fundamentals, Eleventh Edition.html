@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<!-- saved from url=(0087)https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml -->
+<html class=" js flexbox flexboxlegacy no-touch websqldatabase indexeddb history csscolumns csstransforms localstorage sessionstorage applicationcache svg inlinesvg zoom" lang="en" prefix="og: http://ogp.me/ns/# og:book: http://ogp.me/ns/book# og:video: http://ogp.me/ns/video#" itemscope="" itemtype="http://schema.org/Book http://schema.org/ItemPage" data-login-url="/accounts/login/" data-offline-url="/" data-url="/library/view/core-java-volume/9780135167199/chapter1.xhtml" data-csrf-cookie="csrfsafari" data-highlight-privacy="" data-user-id="4626179" data-user-uuid="b4824d20-b011-474b-a2d6-7c28256ff010" data-username="john12smith" data-account-type="Trial" data-activated-trial-date="04/13/2019" data-archive="9780135167199" data-publishers="Prentice Hall" data-htmlfile-name="chapter1.xhtml" data-epub-title="Core Java Volume I—Fundamentals, Eleventh Edition" data-debug="0" data-testing="0" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="author" content="Safari Books Online"><meta name="format-detection" content="telephone=no"><meta http-equiv="cleartype" content="on"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="apple-itunes-app" content="app-id=881697395, app-argument=safaridetail://9780135167199"><meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0"><meta property="twitter:account_id" content="4503599627559754"><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/cool-2.1.15.min.js.download"></script><script type="text/javascript" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/510f1a6865"></script><script id="twitter-wjs" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/widgets.js.download"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/nr-1118.min.js.download"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/1732687426968531" async=""></script><script async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/fbevents.js.download"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f.txt"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f.txt"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/bat.js.download"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f.txt"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/insight.min.js.download"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f.txt"></script><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/linkid.js.download"></script><script async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/gtm.js.download"></script><script async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/analytics.js.download"></script><script type="text/javascript">window.NREUM||(NREUM={}),__nr_require=function(e,n,t){function r(t){if(!n[t]){var o=n[t]={exports:{}};e[t][0].call(o.exports,function(n){var o=e[t][1][n];return r(o||n)},o,o.exports)}return n[t].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<t.length;o++)r(t[o]);return r}({1:[function(e,n,t){function r(){}function o(e,n,t){return function(){return i(e,[c.now()].concat(u(arguments)),n?null:this,t),n?void 0:this}}var i=e("handle"),a=e(3),u=e(4),f=e("ee").get("tracer"),c=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var p=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],d="api-",l=d+"ixn-";a(p,function(e,n){s[n]=o(d+n,!0,"api")}),s.addPageAction=o(d+"addPageAction",!0),s.setCurrentRouteName=o(d+"routeName",!0),n.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,n){var t={},r=this,o="function"==typeof n;return i(l+"tracer",[c.now(),e,t],r),function(){if(f.emit((o?"":"no-")+"fn-start",[c.now(),r,o],t),o)try{return n.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],t),e}finally{f.emit("fn-end",[c.now()],t)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,n){m[n]=o(l+n)}),newrelic.noticeError=function(e,n){"string"==typeof e&&(e=new Error(e)),i("err",[e,c.now(),!1,n])}},{}],2:[function(e,n,t){function r(e,n){if(!o)return!1;if(e!==o)return!1;if(!n)return!0;if(!i)return!1;for(var t=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==t[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var u=navigator.userAgent,f=u.match(a);f&&u.indexOf("Chrome")===-1&&u.indexOf("Chromium")===-1&&(o="Safari",i=f[1])}n.exports={agent:o,version:i,match:r}},{}],3:[function(e,n,t){function r(e,n){var t=[],r="",i=0;for(r in e)o.call(e,r)&&(t[i]=n(r,e[r]),i+=1);return t}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],4:[function(e,n,t){function r(e,n,t){n||(n=0),"undefined"==typeof t&&(t=e?e.length:0);for(var r=-1,o=t-n||0,i=Array(o<0?0:o);++r<o;)i[r]=e[n+r];return i}n.exports=r},{}],5:[function(e,n,t){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,n,t){function r(){}function o(e){function n(e){return e&&e instanceof r?e:e?f(e,u,i):i()}function t(t,r,o,i){if(!d.aborted||i){e&&e(t,r,o);for(var a=n(o),u=v(t),f=u.length,c=0;c<f;c++)u[c].apply(a,r);var p=s[y[t]];return p&&p.push([b,t,r,a]),a}}function l(e,n){h[e]=v(e).concat(n)}function m(e,n){var t=h[e];if(t)for(var r=0;r<t.length;r++)t[r]===n&&t.splice(r,1)}function v(e){return h[e]||[]}function g(e){return p[e]=p[e]||o(t)}function w(e,n){c(e,function(e,t){n=n||"feature",y[t]=n,n in s||(s[n]=[])})}var h={},y={},b={on:l,addEventListener:l,removeEventListener:m,emit:t,get:g,listeners:v,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(s.api||s.feature)&&(d.aborted=!0,s=d.backlog={})}var u="nr@context",f=e("gos"),c=e(3),s={},p={},d=n.exports=o();d.backlog=s},{}],gos:[function(e,n,t){function r(e,n,t){if(o.call(e,n))return e[n];var r=t();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return e[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(e,n,t){function r(e,n,t,r){o.buffer([e],r),o.emit(e,n,t)}var o=e("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(e,n,t){function r(e){var n=typeof e;return!e||"object"!==n&&"function"!==n?-1:e===window?0:a(e,i,function(){return o++})}var o=1,i="nr@id",a=e("gos");n.exports=r},{}],loader:[function(e,n,t){function r(){if(!E++){var e=x.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(s.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&n))return s.abort();c(y,function(n,t){e[n]||(e[n]=t)}),f("mark",["onload",a()+x.offset],null,"api");var t=l.createElement("script");t.src="https://"+e.agent,n.parentNode.insertBefore(t,n)}}function o(){"complete"===l.readyState&&i()}function i(){f("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(u=Math.max((new Date).getTime(),u))-x.offset}var u=(new Date).getTime(),f=e("handle"),c=e(3),s=e("ee"),p=e(2),d=window,l=d.document,m="addEventListener",v="attachEvent",g=d.XMLHttpRequest,w=g&&g.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:g,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var h=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=g&&w&&w[m]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:u,now:a,origin:h,features:{},xhrWrappable:b,userAgent:p};e(1),l[m]?(l[m]("DOMContentLoaded",i,!1),d[m]("load",r,!1)):(l[v]("onreadystatechange",o),d[v]("onload",r)),f("mark",["firstbyte",u],null,"api");var E=0,O=e(5)},{}]},{},["loader"]);</script><link rel="apple-touch-icon" href="https://learning.oreilly.com/static/images/apple-touch-icon.0c29511d2d72.png"><link rel="shortcut icon" href="https://learning.oreilly.com/favicon.ico" type="image/x-icon"><link href="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/css" rel="stylesheet" type="text/css"><title>Chapter 1: An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition</title><link rel="stylesheet" href="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/1f82858304ba.css" type="text/css"><link rel="stylesheet" type="text/css" href="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/annotator.e3b0c44298fc.css"><link rel="stylesheet" href="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/font-awesome.min.css"><style type="text/css" title="ibis-book">
+    @page{margin:1em 2em}#sbo-rt-content div{margin-top:4pt;margin-bottom:4pt;margin-right:15pt}#sbo-rt-content .h1{font-size:2.4em;margin-top:20pt;margin-bottom:25pt;font-weight:bold;page-break-after:avoid;text-align:center}#sbo-rt-content .halftitle{font-size:2em;margin-top:5pt;margin-bottom:25pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .volume{font-size:1.4em;margin-top:15pt;margin-bottom:25pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .volume1{font-size:1.6em;margin-top:15pt;margin-bottom:25pt;font-weight:bold;page-break-after:avoid;text-align:center}#sbo-rt-content .h2{font-size:1.8em;margin-top:25pt;margin-bottom:25pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .h2a{margin-top:25pt;margin-bottom:30pt;font-weight:bold;page-break-after:avoid;text-align:left;border-bottom:#636466 solid .1em}#sbo-rt-content .h2b{font-size:1.5em;margin-top:25pt;margin-bottom:5pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .h3{margin-top:15pt;margin-bottom:5pt;font-weight:bold;page-break-after:avoid;text-align:left;font-size:130%}#sbo-rt-content .h4{margin-top:15pt;margin-bottom:3pt;font-weight:bold;font-size:120%;page-break-after:avoid;text-align:left}#sbo-rt-content .h5{margin-top:15pt;margin-bottom:3pt;font-weight:bold;font-size:110%;page-break-after:avoid;text-align:left}#sbo-rt-content .h6{margin-top:17pt;margin-bottom:3pt;font-weight:normal;font-size:100%;page-break-after:avoid;text-align:left}#sbo-rt-content .h53{margin-top:15pt;margin-bottom:3pt;font-weight:bold;font-size:105%;page-break-after:avoid;text-align:left}#sbo-rt-content div.cover img{max-width:99%;max-height:99%}#sbo-rt-content .cover{margin-top:2pt;margin-bottom:2pt;text-align:center}#sbo-rt-content .indent{margin-top:4pt;margin-bottom:4pt;text-indent:15pt}#sbo-rt-content .indentb{margin-top:4pt;margin-bottom:15pt;text-indent:15pt}#sbo-rt-content .indentt{margin-top:15pt;margin-bottom:4pt;text-indent:15pt}#sbo-rt-content .indenttb{margin-top:10pt;margin-bottom:10pt;text-indent:15pt}#sbo-rt-content .noindent{margin-top:10pt;margin-bottom:4pt;text-indent:.002pt}#sbo-rt-content .noindenth{margin-top:1pt;margin-bottom:4pt;margin-left:10pt;text-indent:-10pt}#sbo-rt-content .noindentl{margin-top:7pt;margin-bottom:4pt;text-indent:.002pt}#sbo-rt-content .table{margin-top:2pt;margin-bottom:2pt;margin-left:8pt;text-indent:.002pt}#sbo-rt-content .borderb{border-bottom:solid .1em}#sbo-rt-content .border{padding-top:10pt;padding-bottom:10pt;margin-top:50pt;margin-bottom:0;border-bottom:solid .1em;border-top:solid .1em}#sbo-rt-content .borderp{margin-top:-20pt;margin-bottom:0;border-bottom:solid .1em}#sbo-rt-content .borderbc{border-bottom:solid .1em;background-color:#e6e6e6}#sbo-rt-content .noindentt{margin-top:15pt;margin-bottom:4pt;text-indent:.002pt}#sbo-rt-content .footnote{font-size:90%;margin-top:4pt;margin-bottom:4pt;text-indent:.002pt}#sbo-rt-content .tnote{font-size:90%;margin-top:6pt;margin-bottom:4pt;text-indent:.002pt}#sbo-rt-content .footnote1{font-size:90%;margin-top:4pt;margin-bottom:15pt;text-indent:.002pt}#sbo-rt-content .tablenoindent{margin-top:4pt;margin-bottom:4pt;margin-left:10pt;margin-right:9pt}#sbo-rt-content .sb-noindent{margin-top:8pt;margin-bottom:5pt;margin-left:20pt;text-align:left}#sbo-rt-content .copy{font-size:90%;margin-top:8pt;margin-bottom:8pt;text-indent:.024pt}#sbo-rt-content .copyt{font-size:90%;margin-top:27pt;margin-bottom:8pt;text-indent:.024pt}#sbo-rt-content .ded{margin-top:1.8em;margin-bottom:.5em;margin-left:3em;margin-right:3em}#sbo-rt-content .att{margin-top:.5em;margin-bottom:.5em;text-align:right}#sbo-rt-content .middle img{vertical-align:middle}#sbo-rt-content div.image img{max-width:99%;max-height:99%}#sbo-rt-content .image{margin-top:5pt;margin-bottom:5pt;text-align:center}#sbo-rt-content .image1{margin-top:20pt;text-align:left}#sbo-rt-content .tocfm{margin-top:10pt;margin-bottom:5pt;text-indent:.002pt;margin-left:0;text-align:left}#sbo-rt-content .tocchap{margin-top:10pt;margin-bottom:5pt;margin-left:0;text-indent:0;text-align:left}#sbo-rt-content .tocchapt{margin-top:12pt;margin-bottom:5pt;margin-left:71pt;text-indent:-71pt;text-align:left}#sbo-rt-content .tocbm{margin-top:20pt;margin-bottom:5pt;text-indent:.002pt;margin-left:71pt;text-align:left}#sbo-rt-content .toc-fm{margin-top:1pt;margin-bottom:5pt;text-indent:.002pt;margin-left:0;text-align:left}#sbo-rt-content .toc-fm1{margin-top:1pt;margin-bottom:5pt;text-indent:.002pt;margin-left:55pt;text-align:left}#sbo-rt-content .toc-bm{margin-top:20pt;margin-bottom:5pt;text-indent:.002pt;margin-left:55pt;text-align:left}#sbo-rt-content .toc-chapter{margin-top:12pt;margin-bottom:5pt;margin-left:55pt;text-indent:-55pt;text-align:left}#sbo-rt-content .tocsec1{margin-top:5pt;margin-bottom:4pt;margin-left:48pt;text-indent:-31pt;text-align:left}#sbo-rt-content .tocsec2{margin-top:2pt;margin-bottom:2pt;margin-left:86pt;text-indent:-39pt;text-align:left}#sbo-rt-content .tocsec3{margin-top:2pt;margin-bottom:2pt;margin-left:133pt;text-indent:-48pt;text-align:left}#sbo-rt-content .sidebar{margin-top:12pt;margin-bottom:12pt;margin-left:0;margin-right:0;background-color:#dcddde;border-radius:.7em;padding:.5em .8em .5em .8em}#sbo-rt-content .sidebar1{margin-top:12pt;margin-bottom:12pt;margin-left:0;margin-right:0;background-color:#f3f3f4;border-radius:.7em;border:solid #b2b3b6 .1em;padding:.5em .8em .5em .8em}#sbo-rt-content .side-title{margin-top:1pt;margin-bottom:7pt;font-weight:bold;margin-left:0;margin-right:20pt;page-break-after:avoid;page-break-inside:avoid;font-size:12pt}#sbo-rt-content .sidebar2{margin-top:12pt;margin-bottom:12pt;margin-left:0;margin-right:0;border-top:solid #a7a9ac .2em;border-bottom:solid #a7a9ac .2em;padding:.3em .2em .3em .2em}#sbo-rt-content .ex-title{font-size:1em;margin-top:1pt;margin-bottom:3pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .notepara{margin-top:4pt;margin-bottom:5pt;text-indent:.002pt;margin-right:20pt;margin-left:10pt;text-align:left}#sbo-rt-content .notepara2{margin-top:20pt;margin-bottom:5pt;text-indent:.002pt;margin-right:20pt;margin-left:8pt;text-align:left}#sbo-rt-content .title-1{margin-top:4pt;margin-bottom:1pt;font-weight:bold;margin-left:0;margin-right:20pt;page-break-after:avoid;page-break-inside:avoid}#sbo-rt-content .indexmain{margin-top:.1em;margin-bottom:.1em;text-align:left;text-indent:-3.3em;margin-left:3.3em}#sbo-rt-content .indexsub{margin-top:.1em;margin-bottom:.1em;text-align:left;text-indent:-2.3em;margin-left:3.2em}#sbo-rt-content .indexsubsub{margin-top:.1em;margin-bottom:.1em;text-align:left;text-indent:-1.3em;margin-left:3.7em}#sbo-rt-content .indexmain1{font-size:1.3em;margin-top:15pt;margin-bottom:6pt;text-align:left;text-indent:.024pt}#sbo-rt-content .heading{page-break-inside:avoid}#sbo-rt-content ol{color:#58585a;margin-left:-.3em;font-weight:bold;margin-top:.5em;margin-bottom:.5em}#sbo-rt-content ol.num{color:#000;margin-left:0;font-weight:normal;margin-top:.5em;margin-bottom:.5em}#sbo-rt-content ol.upper-alpha{color:#58585a;list-style-type:upper-alpha;font-weight:bold;margin-left:-.8em}#sbo-rt-content ol.lower-alpha{list-style-type:lower-alpha;font-weight:normal;color:#000;margin-left:.5em}#sbo-rt-content p.num-list{margin-top:4pt;margin-bottom:4pt;margin-left:1pt;margin-right:1pt;text-align:left}#sbo-rt-content p.list-para{margin-top:4pt;margin-bottom:4pt;margin-left:1pt;margin-right:1pt;text-align:left}#sbo-rt-content p.alpha{margin-top:4pt;margin-bottom:4pt;margin-left:2pt;margin-right:1pt;text-align:left}#sbo-rt-content ul{margin-top:.5em;margin-bottom:.5em}#sbo-rt-content li{margin-top:.2em;margin-bottom:.2em}#sbo-rt-content ol li p{color:#000;font-weight:normal}#sbo-rt-content ul li p{color:#000;font-weight:normal}#sbo-rt-content .pd_ash{color:#939598}#sbo-rt-content .ash{color:#B0A9AC}#sbo-rt-content .ash1{color:#58585a}#sbo-rt-content .feature{margin-top:12pt;margin-bottom:12pt;margin-left:0;margin-right:0;border-top:solid #a7a9ac .3em;border-bottom:solid #a7a9ac .3em;padding:.3em .2em .3em .2em}#sbo-rt-content .fea-title1{font-size:1.1em;margin-top:3pt;margin-bottom:3pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .fea-title{font-size:1.2em;margin-top:7pt;margin-bottom:3pt;font-weight:bold;page-break-after:avoid;text-align:left}#sbo-rt-content .indenthangingB{margin-top:5pt;margin-bottom:4pt;margin-left:25pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB-para{margin-top:5pt;margin-bottom:4pt;margin-left:25pt;text-indent:0;text-align:left}#sbo-rt-content .indenthangingBs{margin-top:5pt;margin-bottom:4pt;margin-left:12pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingBz{margin-top:5pt;margin-bottom:4pt;margin-left:12pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB1{margin-top:4pt;margin-bottom:4pt;margin-left:26pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB2{margin-top:4pt;margin-bottom:4pt;margin-left:40pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB3{margin-top:4pt;margin-bottom:4pt;margin-left:36pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB4{margin-top:4pt;margin-bottom:4pt;margin-left:14pt;text-indent:-10pt;text-align:left}#sbo-rt-content .pre{font-family:Courier New,monospace;font-size:.88em;margin-top:10pt;margin-bottom:10pt;margin-left:20pt;text-align:left}#sbo-rt-content .pre1{font-family:Courier New,monospace;font-size:.88em;margin-top:10pt;margin-bottom:10pt;margin-left:10pt;text-align:left}#sbo-rt-content .pre-ex{font-family:Courier New,monospace;font-size:.88em;margin-top:10pt;margin-bottom:10pt;margin-left:2pt;text-align:left}#sbo-rt-content .pre-ex1{font-family:Courier New,monospace;font-size:.88em;margin-top:10pt;margin-bottom:10pt;margin-left:25pt;text-align:left}#sbo-rt-content .pre-ex2{font-family:Courier New,monospace;font-size:.88em;margin-top:10pt;margin-bottom:10pt;margin-left:-18pt;text-align:left;color:#33A2BD}#sbo-rt-content span.blue1{color:#33A2BD}#sbo-rt-content span.blue{color:#6875FF}#sbo-rt-content span.brown{color:#B4261A}#sbo-rt-content code{font-family:Courier New,monospace}#sbo-rt-content .figcap{margin-top:2pt;margin-left:1pt;margin-right:8pt;margin-bottom:15pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .tab-heading{page-break-inside:avoid}#sbo-rt-content .tabcap{margin-top:10pt;margin-left:1pt;margin-right:8pt;margin-bottom:8pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .tables_tbb{border-top:#000 solid .2em;border-bottom:#c7c8ca solid .1em;border-left:#000 solid .1em;background-color:#e2e3e4}#sbo-rt-content .tables_tbbc{border-top:#000 solid .2em;border-bottom:#000 solid .1em;background-color:#e2e3e4}#sbo-rt-content .tables_tbba{border-bottom:#c7c8ca solid .2em;border-top:#c7c8ca solid .2em;border-left:#000 solid .1em}#sbo-rt-content .tables_tbbac{border-bottom:#c7c8ca solid .2em;border-top:#c7c8ca solid .2em}#sbo-rt-content td{vertical-align:top}#sbo-rt-content table{border-collapse:collapse}#sbo-rt-content .ex-caption{page-break-after:avoid;page-break-inside:avoid;border-bottom:#000 solid .1em;text-align:left}#sbo-rt-content .size{font-size:14pt}#sbo-rt-content .titlea{margin-top:30pt;margin-bottom:3pt;font-weight:bold;margin-left:10pt;margin-right:20pt;page-break-after:avoid;page-break-inside:avoid;font-size:25pt;text-align:center}#sbo-rt-content .edition{margin-top:5pt;margin-bottom:3pt;font-weight:bold;margin-left:0;margin-right:20pt;font-size:17pt;text-align:left}#sbo-rt-content .edition1{margin-top:5pt;margin-bottom:3pt;font-weight:bold;margin-left:0;font-size:1.5em;text-align:center}#sbo-rt-content .author{margin-top:55pt;margin-bottom:3pt;font-weight:bold;margin-left:0;font-size:19pt;text-align:center}#sbo-rt-content .hrline{border-top:#000 solid .2em}#sbo-rt-content div.image-p img{max-width:99%;max-height:99%}#sbo-rt-content .image-p{margin-top:1em;margin-bottom:1em;text-align:center}#sbo-rt-content .codelink{font-size:.88em;margin-top:6pt;margin-bottom:6pt;font-weight:bold;page-break-after:avoid}#sbo-rt-content .group{margin-top:8pt;margin-bottom:8pt;page-break-inside:avoid}#sbo-rt-content .indenthangingBB{margin-top:4pt;margin-bottom:4pt;margin-left:3pt;text-indent:-10pt;text-align:left}#sbo-rt-content .indenthangingB5{margin-top:4pt;margin-bottom:4pt;margin-left:13pt;text-indent:-10pt;text-align:left}#sbo-rt-content .publisher{margin-top:100pt;margin-bottom:2pt;text-align:center}#sbo-rt-content .top{margin-top:5pt;margin-bottom:3pt;border-top:solid .1em;border-bottom:solid .2em;border-spacing:0}#sbo-rt-content .tab-text{margin-top:1pt;margin-bottom:1pt;text-indent:.002pt}#sbo-rt-content .tab_coh{border-bottom:#c7c8ca solid .1em;border-right:#6d6e71 solid .1em;background-color:#e2e3e4;padding:.1em .3em .1em .3em}#sbo-rt-content .tab_coh1{border-bottom:#c7c8ca solid .1em;background-color:#e2e3e4;padding:.1em .3em .1em .3em}#sbo-rt-content .tab_co{border-bottom:#c7c8ca solid .1em;border-right:#6d6e71 solid .1em;padding:.1em .3em .1em .3em}#sbo-rt-content .tab_co1{border-bottom:#c7c8ca solid .1em;padding:.1em .3em .1em .3em}#sbo-rt-content .note{margin-top:1.5em;margin-bottom:1.5em;padding-left:40pt;padding-right:10pt;border-bottom:solid 1pt;border-top:solid 1pt}#sbo-rt-content .notetitle{margin-top:2pt;margin-left:-30pt;margin-right:8pt;margin-bottom:5pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .noteparaj{margin-top:.5em;margin-bottom:.5pt;margin-right:0;margin-left:0;text-align:left}#sbo-rt-content .bq{margin-top:8pt;margin-left:15pt;margin-right:8pt;margin-bottom:15pt;text-align:left}#sbo-rt-content .list{margin-top:8pt;margin-bottom:8pt;border-bottom:solid 2pt;border-top:solid 1pt}#sbo-rt-content .listtitle{font-size:1.1em;margin-top:0;margin-left:0;padding:5pt 10pt 5pt 15pt;margin-right:0;margin-bottom:-8pt;text-align:left;page-break-before:avoid;page-break-inside:avoid;background-color:#e6e6e6}#sbo-rt-content .listtitle1{font-size:1.1em;margin-top:0;margin-left:0;padding:5pt 10pt 5pt 15pt;border-bottom:solid 1pt;margin-right:0;margin-bottom:-8pt;text-align:left;page-break-before:avoid;page-break-inside:avoid;background-color:#e6e6e6}#sbo-rt-content .cppnotetitle{margin-top:2pt;margin-left:-30pt;margin-right:8pt;margin-bottom:15pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .cautitle{margin-top:2pt;margin-left:-30pt;margin-right:8pt;margin-bottom:1pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .box{margin-top:10pt;margin-bottom:10pt;padding:5pt 0 5pt 0;border:solid 2pt #999}#sbo-rt-content .box1{margin-top:10pt;margin-bottom:10pt;padding:.5em;border:solid 2pt #999}#sbo-rt-content .title{margin-top:0;margin-bottom:0;padding:0 0 5pt 10pt;border-bottom:solid 2pt #999}#sbo-rt-content .title1{margin-top:0;margin-bottom:0;padding:5pt 0 5pt 10pt}#sbo-rt-content .right{margin-top:20pt;margin-bottom:10pt;margin-left:0}#sbo-rt-content a{text-decoration:none}#sbo-rt-content .chap{margin-top:8pt;margin-bottom:8pt;page-break-inside:avoid}#sbo-rt-content .tiptitle{margin-top:2pt;margin-left:-30pt;margin-right:8pt;margin-bottom:15pt;text-align:left;page-break-before:avoid;page-break-inside:avoid}#sbo-rt-content .chapter{margin-top:2pt;margin-left:1pt;margin-right:0;margin-bottom:0;text-align:left}#sbo-rt-content .image-pa{text-align:center}
+    </style><script> // <![CDATA[
+    var g = {
+      position_cache: {
+        
+          "chapter": "/api/v1/book/9780135167199/chapter/chapter1.xhtml",
+          "book_id": "9780135167199",
+          "chapter_uri": "chapter1.xhtml",
+          "position": 49.7279932151,
+          "user_uuid": "b4824d20-b011-474b-a2d6-7c28256ff010",
+          "next_chapter_uri": "/library/view/core-java-volume/9780135167199/chapter2.xhtml"
+        
+      },
+      title: "Core Java Volume I—Fundamentals, Eleventh Edition",
+      author_list: "Cay S. Horstmann",
+      format: "book",
+      source: "application/epub+zip",
+      is_system_book: true,
+      is_public: false,
+      loaded_from_server: true,
+      allow_scripts: false,
+      has_mathml: false,
+      show_ios_app_teaser: false
+    };
+    // ]]></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/modernizr.8e35451ddb64.js.download"></script><script>
+    
+      
+
+      
+        
+          window.PUBLIC_ANNOTATIONS = true;
+        
+      
+
+      window.MOBILE_PUBLIC_ANNOTATIONS = false;
+
+    
+
+    
+      window.PRIVACY_CONTROL_OVERRIDE = false;
+    
+
+    
+      window.PRIVACY_CONTROL_SWITCH = true;
+    
+
+    
+      window.PUBLISHER_PAGES = true;
+    
+
+      window.SBO = {
+        "constants": {
+          "SITB_ENDPOINT": "/api/v2/sitb/",
+          "SEARCH_SELECT_ENDPOINT": "/api/v2/search/select/",
+          "ENABLE_ONLINE_TRAINING": true
+        }
+      };
+  </script><link rel="canonical" href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml"><meta name="description" content="Chapter 1 An Introduction to Java In this chapter 1.1 Java as a Programming Platform 1.2 The Java “White Paper” Buzzwords 1.3 Java Applets and the Internet ... "><meta property="og:title" content="Chapter 1: An Introduction to Java"><meta itemprop="isPartOf" content="/library/view/core-java-volume/9780135167199/"><meta itemprop="name" content="Chapter 1: An Introduction to Java"><meta property="og:url" itemprop="url" content="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml"><meta property="og:site_name" content="Safari"><meta property="og:image" itemprop="thumbnailUrl" content="https://learning.oreilly.com/library/cover/9780135167199/"><meta property="og:description" itemprop="description" content="Chapter 1 An Introduction to Java In this chapter 1.1 Java as a Programming Platform 1.2 The Java “White Paper” Buzzwords 1.3 Java Applets and the Internet ... "><meta itemprop="inLanguage" content="en"><meta itemprop="publisher" content="Prentice Hall"><meta property="og:type" content="book"><meta property="og:book:isbn" itemprop="isbn" content="9780135167199"><meta property="og:book:author" itemprop="author" content="Cay S. Horstmann"><meta property="og:book:tag" itemprop="about" content="Certification"><meta property="og:book:tag" itemprop="about" content="Java"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@safari"><style type="text/css" id="font-styles" data-template="#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-size: &lt;%= font_size %&gt; !important; }"></style><style type="text/css" id="font-family" data-template="#sbo-rt-content, #sbo-rt-content p, #sbo-rt-content div { font-family: &lt;%= font_family %&gt; !important; }"></style><style type="text/css" id="column-width" data-template="#sbo-rt-content { max-width: &lt;%= column_width %&gt;% !important; margin: 0 auto !important; }"></style><noscript><meta http-equiv="refresh" content="0; url=/library/no-js/" /></noscript><script type="text/javascript">
+    (function(i,s,o,g,r,a,m) {
+      i['GoogleAnalyticsObject']=r;
+      i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      a=s.createElement(o),m=s.getElementsByTagName(o)[0];
+      a.async=1;
+      a.src=g;
+      m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    var matches = document.cookie.match(/BrowserCookie\s*=\s*([a-f0-9\-]{36})/),
+      user_uuid = null;
+
+    if (matches && matches.length === 2) {
+      user_uuid = matches[1];
+    }
+
+  
+    ga('create', 'UA-39299553-7', {'userId': 'b4824d20-b011-474b-a2d6-7c28256ff010' });
+  
+
+  
+    
+      ga('set', 'dimension1', 'Trial');
+    
+  
+
+  ga('set', 'dimension6', user_uuid);
+
+  
+    ga('set', 'dimension2', 'b4824d20-b011-474b-a2d6-7c28256ff010');
+    
+  
+
+  
+
+  
+
+  //enable enhanced link tracking
+  ga('require', 'linkid', 'linkid.js');
+
+  // reading interface will track pageviews itself
+  if (document.location.pathname.indexOf("/library/view") !== 0) {
+    ga('send', 'pageview');
+  }
+  </script><script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5P4V6Z');
+  </script><script defer="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/vendor.c51077b652d5.js.download"></script><script defer="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/reader.d56cdd72bcfb.js.download"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f(1).txt"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f(2).txt"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f(3).txt"></script><script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/f(4).txt"></script><script async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/MathJax.js.download"></script><style id="annotator-dynamic-style">.annotator-adder, .annotator-outer, .annotator-notice {
+  z-index: 100019;
+}
+.annotator-filter {
+  z-index: 100009;
+}</style><style type="text/css" id="kampyleStyle">.noOutline{outline: none !important;}.wcagOutline:focus{outline: 1px dashed #595959 !important;outline-offset: 2px !important;transition: none !important;}</style></head>
+
+
+<body class="reading sidenav  scalefonts subscribe-panel library nav-collapsed">
+
+    
+  <noscript> 
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5P4V6Z"
+            height="0" width="0"
+            style="display:none;visibility:hidden">
+    </iframe>
+  </noscript>
+
+
+
+    
+      <div class="hide working" role="status">
+        <div class="working-image"></div>
+      </div>
+      <div class="sbo-site-nav">
+        
+
+
+
+
+
+<a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#container" class="skip">Skip to content</a><header class="topbar t-topbar"><nav role="navigation" class="js-site-nav"><ul class="topnav"><li class="t-logo"><a href="https://learning.oreilly.com/home/" class="l0 None safari-home nav-icn js-keyboard-nav-home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" version="1.1" fill="#4A3C31"><desc>Safari Home Icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M4 9.9L4 9.9 4 18 16 18 16 9.9 10 4 4 9.9ZM2.6 8.1L2.6 8.1 8.7 1.9 10 0.5 11.3 1.9 17.4 8.1 18 8.7 18 9.5 18 18.1 18 20 16.1 20 3.9 20 2 20 2 18.1 2 9.5 2 8.7 2.6 8.1Z"></path><rect x="10" y="12" width="3" height="7"></rect><rect transform="translate(18.121320, 10.121320) rotate(-315.000000) translate(-18.121320, -10.121320) " x="16.1" y="9.1" width="4" height="2"></rect><rect transform="translate(2.121320, 10.121320) scale(-1, 1) rotate(-315.000000) translate(-2.121320, -10.121320) " x="0.1" y="9.1" width="4" height="2"></rect></g></svg><span>Safari Home</span></a></li><li><a href="https://learning.oreilly.com/r/" class="t-recommendations-nav l0 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20" height="20" version="1.1" fill="#4A3C31"><desc>recommendations icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M50 25C50 18.2 44.9 12.5 38.3 11.7 37.5 5.1 31.8 0 25 0 18.2 0 12.5 5.1 11.7 11.7 5.1 12.5 0 18.2 0 25 0 31.8 5.1 37.5 11.7 38.3 12.5 44.9 18.2 50 25 50 31.8 50 37.5 44.9 38.3 38.3 44.9 37.5 50 31.8 50 25ZM25 3.1C29.7 3.1 33.6 6.9 34.4 11.8 30.4 12.4 26.9 15.1 25 18.8 23.1 15.1 19.6 12.4 15.6 11.8 16.4 6.9 20.3 3.1 25 3.1ZM34.4 15.6C33.6 19.3 30.7 22.2 27.1 22.9 27.8 19.2 30.7 16.3 34.4 15.6ZM22.9 22.9C19.2 22.2 16.3 19.3 15.6 15.6 19.3 16.3 22.2 19.2 22.9 22.9ZM3.1 25C3.1 20.3 6.9 16.4 11.8 15.6 12.4 19.6 15.1 23.1 18.8 25 15.1 26.9 12.4 30.4 11.8 34.4 6.9 33.6 3.1 29.7 3.1 25ZM22.9 27.1C22.2 30.7 19.3 33.6 15.6 34.4 16.3 30.7 19.2 27.8 22.9 27.1ZM25 46.9C20.3 46.9 16.4 43.1 15.6 38.2 19.6 37.6 23.1 34.9 25 31.3 26.9 34.9 30.4 37.6 34.4 38.2 33.6 43.1 29.7 46.9 25 46.9ZM27.1 27.1C30.7 27.8 33.6 30.7 34.4 34.4 30.7 33.6 27.8 30.7 27.1 27.1ZM38.2 34.4C37.6 30.4 34.9 26.9 31.3 25 34.9 23.1 37.6 19.6 38.2 15.6 43.1 16.4 46.9 20.3 46.9 25 46.9 29.7 43.1 33.6 38.2 34.4Z"></path></g></svg><span>Recommended</span></a></li><li><a href="https://learning.oreilly.com/playlists/" class="t-queue-nav l0 nav-icn None"><!--?xml version="1.0" encoding="UTF-8"?--><svg width="21px" height="17px" viewBox="0 0 21 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch --><title>icon_Playlist_sml</title><desc>Created with Sketch.</desc><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="icon_Playlist_sml" fill-rule="nonzero" fill="#000000"><g id="playlist-icon"><g id="Group-6"><rect id="Rectangle-path" x="5" y="0" width="16" height="3" rx="0.5"></rect><circle id="Oval" cx="1.5" cy="1.5" r="1.5"></circle></g><g id="Group-5" transform="translate(0.000000, 7.000000)"><circle id="Oval" cx="1.5" cy="1.5" r="1.5"></circle><rect id="Rectangle-path" x="5" y="0" width="16" height="3" rx="0.5"></rect></g><g id="Group-5-Copy" transform="translate(0.000000, 14.000000)"><circle id="Oval" cx="1.5" cy="1.5" r="1.5"></circle><rect id="Rectangle-path" x="5" y="0" width="16" height="3" rx="0.5"></rect></g></g></g></g></svg><span>
+               Playlists
+            </span></a></li><li class="search"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="t-search-nav trigger nav-icn l0" data-dropdown-selector=".searchbox"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20" height="20" version="1.1" fill="#4A3C31"><desc>search icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M31.3 0C20.9 0 12.5 8.4 12.5 18.8 12.5 22.5 13.6 25.9 15.4 28.8L1.2 42.9C-0.4 44.5-0.4 47.2 1.2 48.8 2 49.6 3.1 50 4.2 50 5.2 50 6.3 49.6 7.1 48.8L21.2 34.6C24.1 36.5 27.5 37.5 31.3 37.5 41.6 37.5 50 29.1 50 18.8 50 8.4 41.6 0 31.3 0ZM31.3 31.3C24.4 31.3 18.8 25.6 18.8 18.8 18.8 11.9 24.4 6.3 31.3 6.3 38.1 6.3 43.8 11.9 43.8 18.8 43.8 25.6 38.1 31.3 31.3 31.3Z"></path></g></svg><span>Search</span></a></li><li class="usermenu dropdown"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="trigger l0 nav-icn nav-dropdown"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" version="1.1" fill="#4A3C31"><desc>navigation arrow</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M0.1 12.5L9.7 3.1C9.8 3 9.9 3 10 3 10.1 3 10.2 3 10.3 3.1L19.9 12.5C20 12.5 20 12.6 20 12.8 20 12.9 20 13 19.9 13L17 15.9C16.9 16 16.8 16 16.7 16 16.5 16 16.4 16 16.4 15.9L10 9.7 3.6 15.9C3.6 16 3.5 16 3.3 16 3.2 16 3.1 16 3 15.9L0.1 13C0 12.9 0 12.8 0 12.7 0 12.7 0 12.6 0.1 12.5Z"></path></g></svg><span>Expand Nav</span></a><div class="drop-content"><ul><li><a href="https://learning.oreilly.com/history/" class="t-recent-nav l1 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20" height="20" version="1.1" fill="#4A3C31"><desc>recent items icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M25 0C11.2 0 0 11.2 0 25 0 38.8 11.2 50 25 50 38.8 50 50 38.8 50 25 50 11.2 38.8 0 25 0ZM6.3 25C6.3 14.6 14.6 6.3 25 6.3 35.4 6.3 43.8 14.6 43.8 25 43.8 35.4 35.4 43.8 25 43.8 14.6 43.8 6.3 35.4 6.3 25ZM31.8 31.5C32.5 30.5 32.4 29.2 31.6 28.3L27.1 23.8 27.1 12.8C27.1 11.5 26.2 10.4 25 10.4 23.9 10.4 22.9 11.5 22.9 12.8L22.9 25.7 28.8 31.7C29.2 32.1 29.7 32.3 30.2 32.3 30.8 32.3 31.3 32 31.8 31.5Z"></path></g></svg><span>History</span></a></li><li><a href="https://learning.oreilly.com/topics" class="t-topics-link l1 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 55" width="20" height="20" version="1.1" fill="#4A3C31"><desc>topics icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M25 55L50 41.262 50 13.762 25 0 0 13.762 0 41.262 25 55ZM8.333 37.032L8.333 17.968 25 8.462 41.667 17.968 41.667 37.032 25 46.538 8.333 37.032Z"></path></g></svg><span>Topics</span></a></li><li><a href="https://learning.oreilly.com/learning-paths/" class="l1 nav-icn t-learningpaths-nav js-toggle-menu-item"><!--?xml version="1.0" encoding="UTF-8"?--><svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch --><title>Mask</title><desc>Created with Sketch.</desc><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><path d="M0,16.0214227 C0,15.0387209 0.796453294,14.2411658 1.77779753,14.2411658 C2.75914177,14.2411658 3.55559506,15.0387209 3.55559506,16.0214227 C3.55559506,17.0041246 2.75914177,17.8016797 1.77779753,17.8016797 C0.796453294,17.8016797 0,17.0041246 0,16.0214227 Z M9.77788642,5.22914885 C8.9280992,5.72049977 7.84008711,5.42853763 7.34941499,4.57757479 C6.85874287,3.72661195 7.15030167,2.63709467 8.00008889,2.14574375 C8.84987611,1.65439282 9.9378882,1.94635496 10.4285603,2.7973178 C10.9192324,3.64828064 10.6276736,4.73779792 9.77788642,5.22914885 Z M4.57213969,7.35869225 C5.42192691,7.85004318 5.71348571,8.93956046 5.22281359,9.79052329 C4.73214147,10.6414861 3.64412938,10.9334483 2.79434216,10.4420974 C1.94455494,9.95074642 1.65299614,8.86122915 2.14366826,8.01026631 C2.63434038,7.15930347 3.72235247,6.86734132 4.57213969,7.35869225 Z M2.79434216,21.6007481 C3.64412938,21.1093972 4.73214147,21.4013594 5.22281359,22.2523222 C5.71348571,23.103285 5.42192691,24.1928023 4.57213969,24.6841532 C3.72235247,25.1755042 2.63434038,24.883542 2.14366826,24.0325792 C1.65299614,23.1816163 1.94455494,22.0920991 2.79434216,21.6007481 Z M7.34941499,27.4652707 C7.84008711,26.6143079 8.9280992,26.3223457 9.77788642,26.8136966 C10.6276736,27.3050476 10.9192324,28.3945649 10.4285603,29.2455277 C9.9378882,30.0964905 8.84987611,30.3884527 8.00008889,29.8971017 C7.15030167,29.4057508 6.85874287,28.3162335 7.34941499,27.4652707 Z M18.7118524,11.3165596 C21.3074367,12.8173162 22.1963355,16.1392758 20.6976522,18.738451 C19.1989689,21.3358459 15.8815987,22.2259744 13.2860143,20.726998 C10.6922077,19.2262414 9.80330893,15.9042818 11.3002144,13.3051066 C12.7988978,10.7059314 16.116268,9.81580294 18.7118524,11.3165596 Z M26.7821642,27.8093944 L30.1315348,31.1633985 C30.3982044,31.4304371 30.2097579,31.8844026 29.8346426,31.8844026 L21.5945511,31.8844026 C21.1287681,31.8844026 20.751875,31.5069881 20.751875,31.0405608 L20.751875,22.7890697 C20.751875,22.4134355 21.2052134,22.2247282 21.4701052,22.4899865 L24.2843587,25.3081333 C26.8337204,23.0240636 28.4444049,19.7092251 28.4444049,16.0223129 C28.4444049,9.15052091 22.8621207,3.56051397 15.9998222,3.56051397 L15.9998222,0 C24.8230314,0 32,7.18689745 32,16.0223129 C32,20.6919269 29.9750886,24.8790914 26.7821642,27.8093944 Z" id="Mask" fill="#8B889A"></path></g></svg><span>Learning Paths</span></a></li><li class="nav-offers flyout-parent"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="l1 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="20" height="20" version="1.1" fill="#4A3C31"><desc>offers icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M35.9 20.6L27 15.5C26.1 15 24.7 15 23.7 15.5L14.9 20.6C13.9 21.1 13.2 22.4 13.2 23.4L13.2 41.4C13.2 42.4 13.9 43.7 14.9 44.2L23.3 49C24.2 49.5 25.6 49.5 26.6 49L35.9 43.6C36.8 43.1 37.6 41.8 37.6 40.8L37.6 23.4C37.6 22.4 36.8 21.1 35.9 20.6L35.9 20.6ZM40 8.2C39.1 7.6 37.6 7.6 36.7 8.2L30.2 11.9C29.3 12.4 29.3 13.2 30.2 13.8L39.1 18.8C40 19.4 40.7 20.6 40.7 21.7L40.7 39C40.7 40.1 41.4 40.5 42.4 40L48.2 36.6C49.1 36.1 49.8 34.9 49.8 33.8L49.8 15.6C49.8 14.6 49.1 13.3 48.2 12.8L40 8.2 40 8.2ZM27 10.1L33.6 6.4C34.5 5.9 34.5 5 33.6 4.5L26.6 0.5C25.6 0 24.2 0 23.3 0.5L16.7 4.2C15.8 4.7 15.8 5.6 16.7 6.1L23.7 10.1C24.7 10.6 26.1 10.6 27 10.1ZM10.1 21.7C10.1 20.6 10.8 19.4 11.7 18.8L20.6 13.8C21.5 13.2 21.5 12.4 20.6 11.9L13.6 7.9C12.7 7.4 11.2 7.4 10.3 7.9L1.6 12.8C0.7 13.3 0 14.6 0 15.6L0 33.8C0 34.9 0.7 36.1 1.6 36.6L8.4 40.5C9.3 41 10.1 40.6 10.1 39.6L10.1 21.7 10.1 21.7Z"></path></g></svg><span>Offers &amp; Deals</span></a><ul class="flyout"><li><a href="https://get.oreilly.com/email-signup.html" target="_blank" class="l2 nav-icn"><span>Newsletters</span></a></li></ul></li><li class="nav-highlights"><a href="https://learning.oreilly.com/u/b4824d20-b011-474b-a2d6-7c28256ff010/" class="t-highlights-nav l1 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 35" width="20" height="20" version="1.1" fill="#4A3C31"><desc>highlights icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M13.325 18.071L8.036 18.071C8.036 11.335 12.36 7.146 22.5 5.594L22.5 0C6.37 1.113 0 10.632 0 22.113 0 29.406 3.477 35 10.403 35 15.545 35 19.578 31.485 19.578 26.184 19.578 21.556 17.211 18.891 13.325 18.071L13.325 18.071ZM40.825 18.071L35.565 18.071C35.565 11.335 39.86 7.146 50 5.594L50 0C33.899 1.113 27.5 10.632 27.5 22.113 27.5 29.406 30.977 35 37.932 35 43.045 35 47.078 31.485 47.078 26.184 47.078 21.556 44.74 18.891 40.825 18.071L40.825 18.071Z"></path></g></svg><span>Highlights</span></a></li><li><a href="https://learning.oreilly.com/u/preferences/" class="t-settings-nav l1 js-settings nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 53" width="20" height="20" version="1.1" fill="#4A3C31"><desc>settings icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M44.6 29.6C44.7 28.6 44.8 27.5 44.8 26.5 44.8 25.5 44.7 24.4 44.6 23.4L49.6 19C50 18.8 50.1 18.3 49.9 17.9 48.9 14.7 47.1 11.7 44.9 9.1 44.6 8.8 44.2 8.7 43.8 8.8L37.4 11.1C35.8 9.8 34 8.7 32.1 8L30.9 1.4C30.8 0.9 30.4 0.6 30 0.5 26.7-0.2 23.3-0.2 20 0.5 19.6 0.6 19.2 0.9 19.1 1.4L17.9 8C16 8.7 14.1 9.8 12.6 11.1L6.2 8.8C5.8 8.7 5.4 8.8 5.1 9.1 2.9 11.7 1.1 14.7 0.1 17.9 -0.1 18.3 0 18.8 0.4 19L5.4 23.4C5.3 24.4 5.2 25.5 5.2 26.5 5.2 27.5 5.3 28.6 5.4 29.6L0.4 34C0 34.2-0.1 34.7 0.1 35.1 1.1 38.3 2.9 41.4 5.1 43.9 5.4 44.2 5.8 44.4 6.2 44.2L12.6 42C14.1 43.2 16 44.3 17.9 45L19.1 51.7C19.2 52.1 19.6 52.5 20 52.5 21.6 52.8 23.3 53 25 53 26.7 53 28.4 52.8 30 52.5 30.4 52.5 30.8 52.1 30.9 51.7L32.1 45C34 44.3 35.8 43.2 37.4 42L43.8 44.2C44.2 44.4 44.6 44.2 44.9 43.9 47.1 41.4 48.9 38.3 49.9 35.1 50.1 34.7 50 34.2 49.6 34L44.6 29.6ZM25 36.4C19.6 36.4 15.2 32 15.2 26.5 15.2 21 19.6 16.6 25 16.6 30.4 16.6 34.8 21 34.8 26.5 34.8 32 30.4 36.4 25 36.4Z"></path></g></svg><span>Settings</span></a></li><li><a href="https://www.oreilly.com/online-learning/support/" class="l1 no-icon">Support</a></li><li><a href="https://learning.oreilly.com/accounts/logout/" class="l1 no-icon">Sign Out</a></li></ul><ul class="profile"><li><a href="https://learning.oreilly.com/u/preferences/" class="l2 nav-icn None"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 53" width="20" height="20" version="1.1" fill="#4A3C31"><desc>settings icon</desc><g stroke="none" stroke-width="1" fill-rule="evenodd"><path d="M44.6 29.6C44.7 28.6 44.8 27.5 44.8 26.5 44.8 25.5 44.7 24.4 44.6 23.4L49.6 19C50 18.8 50.1 18.3 49.9 17.9 48.9 14.7 47.1 11.7 44.9 9.1 44.6 8.8 44.2 8.7 43.8 8.8L37.4 11.1C35.8 9.8 34 8.7 32.1 8L30.9 1.4C30.8 0.9 30.4 0.6 30 0.5 26.7-0.2 23.3-0.2 20 0.5 19.6 0.6 19.2 0.9 19.1 1.4L17.9 8C16 8.7 14.1 9.8 12.6 11.1L6.2 8.8C5.8 8.7 5.4 8.8 5.1 9.1 2.9 11.7 1.1 14.7 0.1 17.9 -0.1 18.3 0 18.8 0.4 19L5.4 23.4C5.3 24.4 5.2 25.5 5.2 26.5 5.2 27.5 5.3 28.6 5.4 29.6L0.4 34C0 34.2-0.1 34.7 0.1 35.1 1.1 38.3 2.9 41.4 5.1 43.9 5.4 44.2 5.8 44.4 6.2 44.2L12.6 42C14.1 43.2 16 44.3 17.9 45L19.1 51.7C19.2 52.1 19.6 52.5 20 52.5 21.6 52.8 23.3 53 25 53 26.7 53 28.4 52.8 30 52.5 30.4 52.5 30.8 52.1 30.9 51.7L32.1 45C34 44.3 35.8 43.2 37.4 42L43.8 44.2C44.2 44.4 44.6 44.2 44.9 43.9 47.1 41.4 48.9 38.3 49.9 35.1 50.1 34.7 50 34.2 49.6 34L44.6 29.6ZM25 36.4C19.6 36.4 15.2 32 15.2 26.5 15.2 21 19.6 16.6 25 16.6 30.4 16.6 34.8 21 34.8 26.5 34.8 32 30.4 36.4 25 36.4Z"></path></g></svg><span>Settings</span></a><span class="l2 t-nag-notification" id="nav-nag"><strong class="trial-green">10</strong> days left in your trial.
+  
+  
+
+  
+    
+      
+
+<a class="" href="https://learning.oreilly.com/subscribe/">Subscribe</a>.
+
+
+    
+  
+
+  
+
+</span></li><li><a href="https://www.oreilly.com/online-learning/support/" class="l2">Support</a></li><li><a href="https://learning.oreilly.com/accounts/logout/" class="l2">Sign Out</a></li></ul></div></li></ul></nav></header>
+
+
+      </div>
+      <div id="container" class="application" style="height: auto;">
+        
+          <div class="nav-container clearfix">
+            
+
+
+            
+            
+          </div>
+
+          
+
+  <div class="js-toc">
+    
+      <div class="sbo-reading-menu sbo-menu-top"><section class="sbo-toc-container toc-menu"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="sbo-toc-thumb"><span class="sbo-title ss-list"><h1><div class="visuallyhidden">Table of Contents for </div>
+      
+      Core Java Volume I—Fundamentals, Eleventh Edition
+      
+    </h1></span></a><div class="toc-contents"></div></section></div>
+
+    
+
+    <div class="interface-controls interface-controls-top">
+      <ul class="interface-control-btns js-bitlist js-reader">
+        <li class="js-search-in-archive search-in-archive t-search-in-archive"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" title="Search in archive" class="js-search-controls search-controls"><span class="icon">Search in book...</span></a><form class="search-archive-bar js-search-form"><input type="search" name="query" placeholder="Search inside this book..." autocomplete="off"></form><div class="search-archive-results"><div class="js-sitb-results-region"></div></div></li><li class="queue-control"><div class="js-content-uri" data-content-uri="/api/v1/book/9780135167199/chapter/chapter1.xhtml"><div class="js-collections-dropdown collections-dropdown menu-bit-cards"><div data-reactroot="" class="menu-dropdown-wrapper js-menu-dropdown-wrapper align-right"><img class="hidden" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/ajax-transp.gif" alt="loading spinner"><div class="menu-control"><div class="control "><div class="js-playlists-menu"><button class="js-playlist-icon"><svg class="icon-add-to-playlist-sml" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g fill-rule="nonzero" fill="#000000"><g transform="translate(-1.000000, 0.000000)"><rect x="5" y="0" width="12" height="2"></rect><title>Playlists</title><path d="M4.5,14 C6.43299662,14 8,12.4329966 8,10.5 C8,8.56700338 6.43299662,7 4.5,7 C2.56700338,7 1,8.56700338 1,10.5 C1,12.4329966 2.56700338,14 4.5,14 Z M2.5,10 L4,10 L4,8.5 L5,8.5 L5,10 L6.5,10 L6.5,11 L5,11 L5,12.5 L4,12.5 L4,11 L2.5,11 L2.5,10 Z"></path><circle cx="2" cy="5" r="1"></circle><circle cx="1.94117647" cy="1" r="1"></circle><rect x="5" y="4" width="12" height="2"></rect><rect x="9" y="8" width="8" height="2"></rect><rect x="9" y="12" width="8" height="2"></rect></g></g></g></svg><div class="js-playlist-addto-label">Add&nbsp;To</div></button></div></div></div></div></div></div></li><li class="js-font-control-panel font-control-activator"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" data-push-state="false" id="font-controls" title="Change font size" aria-label="Change font size"><span class="icon">Toggle Font Controls</span></a></li><li class="dropdown sharing-controls"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="trigger" data-push-state="false" title="Share" aria-label="Share"><i class="fa fa-share"></i></a><ul class="social-sharing dropdown-menu"><li><a class="twitter share-button t-twitter" target="_blank" aria-label="Share this section on Twitter" title="Share this section on Twitter" href="https://twitter.com/share?url=https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml&amp;text=Core%20Java%20Volume%20I%E2%80%94Fundamentals%2C%20Eleventh%20Edition&amp;via=safari"><span>Twitter</span></a></li><li><a class="facebook share-button t-facebook" target="_blank" aria-label="Share this section on Facebook" title="Share this section on Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml"><span>Facebook</span></a></li><li><a class="googleplus share-button t-googleplus" target="_blank" aria-label="Share this secton on Google Plus" title="Share this secton on Google Plus" href="https://plus.google.com/share?url=https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml"><span>Google Plus</span></a></li><li><a class="email share-button t-email" aria-label="Share this section via email" title="Share this section via email" href="mailto:?subject=Safari:%20Chapter%201%3A%20An%20Introduction%20to%20Java&amp;body=https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml%0D%0Afrom%20Core%20Java%20Volume%20I%E2%80%94Fundamentals%2C%20Eleventh%20Edition%0D%0A"><span>Email</span></a></li></ul></li>
+      </ul>
+    </div>
+
+    <section role="document">
+        
+        
+
+
+
+
+  <script defer="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/djangoMessagesPage.5171c8ba238a.js.download"></script>
+
+
+        
+	  <div class="t-sbo-prev sbo-prev sbo-nav-top">
+  
+    
+      
+        <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/ack.xhtml" class="prev nav-link">
+      
+          <span aria-hidden="true" class="pagination-label t-prev-label">Prev</span>
+          <span class="visuallyhidden">Previous Chapter</span>
+          <div class="pagination-title t-prev-title">Acknowledgments</div>
+        </a>
+    
+  
+  </div>
+
+  <div class="t-sbo-next sbo-next sbo-nav-top">
+  
+    
+      
+        <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter2.xhtml" class="next nav-link">
+      
+          <span aria-hidden="true" class="pagination-label t-next-label">Next</span>
+          <span class="visuallyhidden">Next Chapter</span>
+          <div class="pagination-title t-next-title">Chapter 2: The Java Programming Environment</div>
+        </a>
+    
+  
+  </div>
+
+
+
+<div id="sbo-rt-content" style="transform: none;"><div class="annotator-wrapper"><h2 class="h2" id="chapter1"><span epub:type="pagebreak" id="page_1"></span>Chapter 1<br>An Introduction to Java</h2>
+<div class="chap">
+<p class="chapter"><strong>In this chapter</strong></p>
+<ul>
+<li><p class="noindentl"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#sec1_1">1.1 Java as a Programming Platform</a></p></li>
+<li><p class="noindentl"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#sec1_2">1.2 The Java “White Paper” Buzzwords</a></p></li>
+<li><p class="noindentl"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#sec1_3">1.3 Java Applets and the Internet</a></p></li>
+<li><p class="noindentl"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#sec1_4">1.4 A Short History of Java</a></p></li>
+<li><p class="noindentl"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#sec1_5">1.5 Common Misconceptions about Java</a></p></li>
+</ul>
+</div>
+<p class="noindent">The first release of Java in 1996 generated an incredible amount of excitement, not just in the computer press, but in mainstream media such as the <em>New York Times</em>, the <em>Washington Post</em>, and <em>BusinessWeek</em>. Java has the distinction of being the first and only programming language that had a ten-minute story on National Public Radio. A $100,000,000 venture capital fund was set up solely for products using a <em>specific</em> computer language. I hope you will enjoy a brief history of Java that you will find in this chapter.</p>
+<h3 class="h3" id="sec1_1">1.1 Java as a Programming Platform</h3>
+<p class="noindent">In the first edition of this book, my coauthor Gary Cornell and I had this to write about Java:</p>
+<p class="noindent">“As a computer language, Java’s hype is overdone: Java is certainly a <em>good</em> programming language. There is no doubt that it is one of the better languages available to serious programmers. We think it could <em>potentially</em> have been a <span epub:type="pagebreak" id="page_2"></span>great programming language, but it is probably too late for that. Once a language is out in the field, the ugly reality of compatibility with existing code sets in.”</p>
+<p class="noindent">Our editor got a lot of flack for this paragraph from someone very high up at Sun Microsystems, the company that originally developed Java. The Java language has a lot of nice features that we will examine in detail later in this chapter. It has its share of warts, and some of the newer additions to the language are not as elegant as the original features because of compatibility requirements.</p>
+<p class="noindent">But, as we already said in the first edition, Java was never just a language. There are lots of programming languages out there, but few of them make much of a splash. Java is a whole <em>platform</em>, with a huge library, containing lots of reusable code, and an execution environment that provides services such as security, portability across operating systems, and automatic garbage collection.</p>
+<p class="noindent">As a programmer, you will want a language with a pleasant syntax and comprehensible semantics (i.e., not C++). Java fits the bill, as do dozens of other fine languages. Some languages give you portability, garbage collection, and the like, but they don’t have much of a library, forcing you to roll your own if you want fancy graphics or networking or database access. Well, Java has everything—a good language, a high-quality execution environment, and a vast library. That combination is what makes Java an irresistible proposition to so many programmers.</p>
+<h3 class="h3" id="sec1_2">1.2 The Java “White Paper” Buzzwords</h3>
+<p class="noindent">The authors of Java wrote an influential white paper that explains their design goals and accomplishments. They also published a shorter overview that is organized along the following 11 buzzwords:</p>
+<ol class="num">
+<li><p class="noindentl">Simple</p></li>
+<li><p class="noindentl">Object-Oriented</p></li>
+<li><p class="noindentl">Distributed</p></li>
+<li><p class="noindentl">Robust</p></li>
+<li><p class="noindentl">Secure</p></li>
+<li><p class="noindentl">Architecture-Neutral</p></li>
+<li><p class="noindentl">Portable</p></li>
+<li><p class="noindentl">Interpreted</p></li>
+<li><p class="noindentl"><span epub:type="pagebreak" id="page_3"></span>High-Performance</p></li>
+<li><p class="noindentl">Multithreaded</p></li>
+<li><p class="noindentl">Dynamic</p></li>
+</ol>
+<p class="noindent">In the following subsections, you will find a summary, with excerpts from the white paper, of what the Java designers say about each buzzword, together with a commentary based on my experiences with the current version of Java.</p>
+<div class="note">
+<p class="notetitle"><img src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/p0xxiii_01.jpg" alt="Images" width="42" height="42" data-mfp-src="/library/view/core-java-volume/9780135167199/graphics/p0xxiii_01.jpg"> <strong>Note</strong></p>
+<p class="noindent">The white paper can be found at <code><a href="http://www.oracle.com/technetwork/java/langenv-140151.html">www.oracle.com/technetwork/java/langenv-140151.html</a></code>. You can retrieve the overview with the 11 buzzwords at <code><a href="http://horstmann.com/corejava/java-an-overview/7Gosling.pdf">http://horstmann.com/corejava/java-an-overview/7Gosling.pdf</a></code>.</p>
+</div>
+<h4 class="h4" id="sec1_2_1">1.2.1 Simple</h4>
+<div class="bq">
+<p class="noindent"><em>We wanted to build a system that could be programmed easily without a lot of esoteric training and which leveraged today’s standard practice. So even though we found that C++ was unsuitable, we designed Java as closely to C++ as possible in order to make the system more comprehensible. Java omits many rarely used, poorly understood, confusing features of C++ that, in our experience, bring more grief than benefit.</em></p>
+</div>
+<p class="noindent">The syntax for Java is, indeed, a cleaned-up version of C++ syntax. There is no need for header files, pointer arithmetic (or even a pointer syntax), structures, unions, operator overloading, virtual base classes, and so on. (See the C++ notes interspersed throughout the text for more on the differences between Java and C++.) The designers did not, however, attempt to fix all of the clumsy features of C++. For example, the syntax of the <code>switch</code> statement is unchanged in Java. If you know C++, you will find the transition to the Java syntax easy.</p>
+<p class="noindent">At the time Java was released, C++ was actually not the most commonly used programming language. Many developers used Visual Basic and its drag-and-drop programming environment. These developers did not find Java simple. It took several years for Java development environments to catch up. Nowadays, Java development environments are far ahead of those for most other programming languages.</p>
+<div class="bq">
+<p class="noindent"><em>Another aspect of being simple is being small. One of the goals of Java is to enable the construction of software that can run stand-alone on small machines. The size of the basic interpreter and class support is about 40K; the basic standard libraries and thread support (essentially a self-contained microkernel) add another 175K.</em></p>
+</div>
+<p class="noindent"><span epub:type="pagebreak" id="page_4"></span>This was a great achievement at the time. Of course, the library has since grown to huge proportions. There is now a separate Java Micro Edition with a smaller library, suitable for embedded devices.</p>
+<h4 class="h4" id="sec1_2_2">1.2.2 Object-Oriented</h4>
+<div class="bq">
+<p class="noindent"><em>Simply stated, object-oriented design is a programming technique that focuses on the data—objects—and on the interfaces to those objects. To make an analogy with carpentry, an “object-oriented” carpenter would be mostly concerned with the chair he is building, and secondarily with the tools used to make it; a “non-object-oriented” carpenter would think primarily of his tools. The object-oriented facilities of Java are essentially those of C++.</em></p>
+</div>
+<p class="noindent">Object orientation was pretty well established when Java was developed. The object-oriented features of Java are comparable to those of C++. The major difference between Java and C++ lies in multiple inheritance, which Java has replaced with a simpler concept of interfaces. Java has a richer capacity for runtime introspection (discussed in <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter5.xhtml#chapter5">Chapter 5</a>) than C++.</p>
+<h4 class="h4" id="sec1_2_3">1.2.3 Distributed</h4>
+<div class="bq">
+<p class="noindent"><em>Java has an extensive library of routines for coping with TCP/IP protocols like HTTP and FTP. Java applications can open and access objects across the Net via URLs with the same ease as when accessing a local file system.</em></p>
+</div>
+<p class="noindent">Nowadays, one takes this for granted—but in 1995, connecting to a web server from a C++ or Visual Basic program was a major undertaking.</p>
+<h4 class="h4" id="sec1_2_4">1.2.4 Robust</h4>
+<div class="bq">
+<p class="noindent"><em>Java is intended for writing programs that must be reliable in a variety of ways. Java puts a lot of emphasis on early checking for possible problems, later dynamic (runtime) checking, and eliminating situations that are error-prone. . . . The single biggest difference between Java and C/C++ is that Java has a pointer model that eliminates the possibility of overwriting memory and corrupting data.</em></p>
+</div>
+<p class="noindent">The Java compiler detects many problems that in other languages would show up only at runtime. As for the second point, anyone who has spent hours chasing memory corruption caused by a pointer bug will be very happy with this aspect of Java.</p>
+<h4 class="h4" id="sec1_2_5"><span epub:type="pagebreak" id="page_5"></span>1.2.5 Secure</h4>
+<div class="bq">
+<p class="noindent"><em>Java is intended to be used in networked/distributed environments. Toward that end, a lot of emphasis has been placed on security. Java enables the construction of virus-free, tamper-free systems.</em></p>
+</div>
+<p class="noindent">From the beginning, Java was designed to make certain kinds of attacks impossible, among them:</p>
+<ul>
+<li><p class="noindentl">Overrunning the runtime stack—a common attack of worms and viruses</p></li>
+<li><p class="noindentl">Corrupting memory outside its own process space</p></li>
+<li><p class="noindentl">Reading or writing files without permission</p></li>
+</ul>
+<p class="noindent">Originally, the Java attitude towards downloaded code was “Bring it on!” Untrusted code was executed in a sandbox environment where it could not impact the host system. Users were assured that nothing bad could happen because Java code, no matter where it came from, could never escape from the sandbox.</p>
+<p class="noindent">However, the security model of Java is complex. Not long after the first version of the Java Development Kit was shipped, a group of security experts at Princeton University found subtle bugs that allowed untrusted code to attack the host system.</p>
+<p class="noindent">Initially, security bugs were fixed quickly. Unfortunately, over time, hackers got quite good at spotting subtle flaws in the implementation of the security architecture. Sun, and then Oracle, had a tough time keeping up with bug fixes.</p>
+<p class="noindent">After a number of high-profile attacks, browser vendors and Oracle became increasingly cautious. Java browser plug-ins no longer trust remote code unless it is digitally signed and users have agreed to its execution.</p>
+<div class="note">
+<p class="notetitle"><img src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/p0xxiii_01.jpg" alt="Images" width="42" height="42" data-mfp-src="/library/view/core-java-volume/9780135167199/graphics/p0xxiii_01.jpg"> <strong>Note</strong></p>
+<p class="noindent">Even though in hindsight, the Java security model was not as successful as originally envisioned, Java was well ahead of its time. A competing code delivery mechanism from Microsoft relied on digital signatures alone for security. Clearly this was not sufficient: As any user of Microsoft’s own products can confirm, programs from well-known vendors do crash and create damage.</p>
+</div>
+<h4 class="h4" id="sec1_2_6"><span epub:type="pagebreak" id="page_6"></span>1.2.6 Architecture-Neutral</h4>
+<div class="bq">
+<p class="noindent"><em>The compiler generates an architecture-neutral object file format. The compiled code is executable on many processors, given the presence of the Java runtime system. The Java compiler does this by generating bytecode instructions which have nothing to do with a particular computer architecture. Rather, they are designed to be both easy to interpret on any machine and easy to translate into native machine code on the fly.</em></p>
+</div>
+<p class="noindent">Generating code for a “virtual machine” was not a new idea at the time. Programming languages such as Lisp, Smalltalk, and Pascal had employed this technique for many years.</p>
+<p class="noindent">Of course, interpreting virtual machine instructions is slower than running machine instructions at full speed. However, virtual machines have the option of translating the most frequently executed bytecode sequences into machine code—a process called just-in-time compilation.</p>
+<p class="noindent">Java’s virtual machine has another advantage. It increases security because it can check the behavior of instruction sequences.</p>
+<h4 class="h4" id="sec1_2_7">1.2.7 Portable</h4>
+<div class="bq">
+<p class="noindent"><em>Unlike C and C++, there are no “implementation-dependent” aspects of the specification. The sizes of the primitive data types are specified, as is the behavior of arithmetic on them.</em></p>
+</div>
+<p class="noindent">For example, an <code>int</code> in Java is always a 32-bit integer. In C/C++, <code>int</code> can mean a 16-bit integer, a 32-bit integer, or any other size that the compiler vendor likes. The only restriction is that the <code>int</code> type must have at least as many bytes as a <code>short int</code> and cannot have more bytes than a <code>long int</code>. Having a fixed size for number types eliminates a major porting headache. Binary data is stored and transmitted in a fixed format, eliminating confusion about byte ordering. Strings are saved in a standard Unicode format.</p>
+<div class="bq">
+<p class="noindent"><em>The libraries that are a part of the system define portable interfaces. For example, there is an abstract</em> <code>Window</code> <em>class and implementations of it for UNIX, Windows, and the Macintosh.</em></p>
+</div>
+<p class="noindent">The example of a <code>Window</code> class was perhaps poorly chosen. As anyone who has ever tried knows, it is an effort of heroic proportions to implement a user interface that looks good on Windows, the Macintosh, and ten flavors of UNIX. Java 1.0 made the heroic effort, delivering a simple toolkit that provided common user interface elements on a number of platforms. Unfortunately, the result was a library that, with a lot of work, could give barely acceptable <span epub:type="pagebreak" id="page_7"></span>results on different systems. That initial user interface toolkit has since been replaced, and replaced again, and portability across platforms remains an issue.</p>
+<p class="noindent">However, for everything that isn’t related to user interfaces, the Java libraries do a great job of letting you work in a platform-independent manner. You can work with files, regular expressions, XML, dates and times, databases, network connections, threads, and so on, without worrying about the underlying operating system. Not only are your programs portable, but the Java APIs are often of higher quality than the native ones.</p>
+<h4 class="h4" id="sec1_2_8">1.2.8 Interpreted</h4>
+<div class="bq">
+<p class="noindent"><em>The Java interpreter can execute Java bytecodes directly on any machine to which the interpreter has been ported. Since linking is a more incremental and lightweight process, the development process can be much more rapid and exploratory.</em></p>
+</div>
+<p class="noindent">This was a real stretch. Anyone who has used Lisp, Smalltalk, Visual Basic, Python, R, or Scala knows what a “rapid and exploratory” development process is. You try out something, and you instantly see the result. For the first 20 years of Java’s existence, development environments were not focused on that experience. It wasn’t until Java 9 that the <code>jshell</code> tool supported rapid and exploratory programming.</p>
+<h4 class="h4" id="sec1_2_9">1.2.9 High-Performance</h4>
+<div class="bq">
+<p class="noindent"><em>While the performance of interpreted bytecodes is usually more than adequate, there are situations where higher performance is required. The bytecodes can be translated on the fly (at runtime) into machine code for the particular CPU the application is running on.</em></p>
+</div>
+<p class="noindent">In the early years of Java, many users disagreed with the statement that the performance was “more than adequate.” Today, however, the just-in-time compilers have become so good that they are competitive with traditional compilers and, in some cases, even outperform them because they have more information available. For example, a just-in-time compiler can monitor which code is executed frequently and optimize just that code for speed. A more sophisticated optimization is the elimination (or “inlining”) of function calls. The just-in-time compiler knows which classes have been loaded. It can use inlining when, based upon the currently loaded collection of classes, a particular function is never overridden, and it can undo that optimization later if necessary.</p>
+<h4 class="h4" id="sec1_2_10"><span epub:type="pagebreak" id="page_8"></span>1.2.10 Multithreaded</h4>
+<div class="bq">
+<p class="noindent"><em>[The] benefits of multithreading are better interactive responsiveness and real-time behavior.</em></p>
+</div>
+<p class="noindent">Nowadays, we care about concurrency because Moore’s law has come to an end. Instead of faster processors, we just get more of them, and we have to keep them busy. Yet when you look at most programming languages, they show a shocking disregard for this problem.</p>
+<p class="noindent">Java was well ahead of its time. It was the first mainstream language to support concurrent programming. As you can see from the white paper, its motivation was a little different. At the time, multicore processors were exotic, but web programming had just started, and processors spent a lot of time waiting for a response from the server. Concurrent programming was needed to make sure the user interface didn’t freeze.</p>
+<p class="noindent">Concurrent programming is never easy, but Java has done a very good job making it manageable.</p>
+<h4 class="h4" id="sec1_2_11">1.2.11 Dynamic</h4>
+<div class="bq">
+<p class="noindent"><em>In a number of ways, Java is a more dynamic language than C or C++. It was designed to adapt to an evolving environment. Libraries can freely add new methods and instance variables without any effect on their clients. In Java, finding out runtime type information is straightforward.</em></p>
+</div>
+<p class="noindent">This is an important feature in situations where code needs to be added to a running program. A prime example is code that is downloaded from the Internet to run in a browser. In C or C++, this is indeed a major challenge, but the Java designers were well aware of dynamic languages that made it easy to evolve a running program. Their achievement was to bring this feature to a mainstream programming language.</p>
+<div class="note">
+<p class="notetitle"><img src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/p0xxiii_01.jpg" alt="Images" width="42" height="42" data-mfp-src="/library/view/core-java-volume/9780135167199/graphics/p0xxiii_01.jpg"> <strong>Note</strong></p>
+<p class="noindent">Shortly after the initial success of Java, Microsoft released a product called J++ with a programming language and virtual machine that were almost identical to Java. This effort failed to gain traction, and Microsoft followed through with another language called C# that also has many similarities to Java but runs on a different virtual machine. This book does not cover J++ or C#.</p>
+</div>
+<h3 class="h3" id="sec1_3"><span epub:type="pagebreak" id="page_9"></span>1.3 Java Applets and the Internet</h3>
+<p class="noindent">The idea here is simple: Users will download Java bytecodes from the Internet and run them on their own machines. <span class="annotator-hl annotator-hl-temporary">Java programs that work on web pages are called </span><em><span class="annotator-hl annotator-hl-temporary">applets</span></em><span class="annotator-hl annotator-hl-temporary">.</span> To use an applet, you only need a Java-enabled web browser, which will execute the bytecodes for you. You need not install any software. You get the latest version of the program whenever you visit the web page containing the applet. Most importantly, thanks to the security of the virtual machine, you never need to worry about attacks from hostile code.</p>
+<p class="noindent">Inserting an applet into a web page works much like embedding an image. The applet becomes a part of the page, and the text flows around the space used for the applet. The point is, this image is <em>alive</em>. It reacts to user commands, changes its appearance, and exchanges data between the computer presenting the applet and the computer serving it.</p>
+<p class="noindent"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#fig1_1">Figure 1.1</a> shows the Jmol applet that displays molecular structures. By using the mouse, you can rotate and zoom each molecule to better understand its structure. At the time that applets were invented, this kind of direct manipulation was not achievable with web pages—there was only rudimentary JavaScript and no HTML canvas.</p>
+<div class="group">
+<div class="image"><img src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/01fig01_09.jpg" alt="Images" width="626" height="478" data-mfp-src="/library/view/core-java-volume/9780135167199/graphics/01fig01_09.jpg"></div>
+<p class="figcap" id="fig1_1"><strong>Figure 1.1</strong> The Jmol applet</p>
+</div>
+<p class="noindent"><span epub:type="pagebreak" id="page_10"></span>When applets first appeared, they created a huge amount of excitement. Many people believe that the lure of applets was responsible for the astonishing popularity of Java. However, the initial excitement soon turned into frustration. Various versions of the Netscape and Internet Explorer browsers ran different versions of Java, some of which were seriously outdated. This sorry situation made it increasingly difficult to develop applets that took advantage of the most current Java version. Instead, Adobe’s Flash technology became popular for achieving dynamic effects in the browser. Later, when Java was dogged by serious security issues, browsers and the Java browser plug-in became increasingly restrictive. Nowadays, it requires skill and dedication to get applets to work in your browser. For example, if you visit the Jmol web site at <code><a href="http://jmol.sourceforge.net/demo/aminoacids/">http://jmol.sourceforge.net/demo/aminoacids/</a></code>, you will likely encounter a message exhorting you to configure your browser for allowing applets to run.</p>
+<h3 class="h3" id="sec1_4">1.4 A Short History of Java</h3>
+<p class="noindent">This section gives a short history of Java’s evolution. It is based on various published sources (most importantly an interview with Java’s creators in the July 1995 issue of <em>SunWorld</em>’s online magazine).</p>
+<p class="noindent">Java goes back to 1991, when a group of Sun engineers, led by Patrick Naughton and James Gosling (a Sun Fellow and an all-around computer wizard), wanted to design a small computer language that could be used for consumer devices like cable TV switchboxes. Since these devices do not have a lot of power or memory, the language had to be small and generate very tight code. Also, as different manufacturers may choose different central processing units (CPUs), it was important that the language not be tied to any single architecture. The project was code-named “Green.”</p>
+<p class="noindent">The requirements for small, tight, and platform-neutral code led the team to design a portable language that generated intermediate code for a virtual machine.</p>
+<p class="noindent">The Sun people came from a UNIX background, so they based their language on C++ rather than Lisp, Smalltalk, or Pascal. But, as Gosling says in the interview, “All along, the language was a tool, not the end.” Gosling decided to call his language “Oak” (presumably because he liked the look of an oak tree that was right outside his window at Sun). The people at Sun later realized that Oak was the name of an existing computer language, so they changed the name to Java. This turned out to be an inspired choice.</p>
+<p class="noindent">In 1992, the Green project delivered its first product, called “*7.” It was an extremely intelligent remote control. Unfortunately, no one was interested in producing this at Sun, and the Green people had to find other ways to market <span epub:type="pagebreak" id="page_11"></span>their technology. However, none of the standard consumer electronics companies were interested either. The group then bid on a project to design a cable TV box that could deal with emerging cable services such as video-on-demand. They did not get the contract. (Amusingly, the company that did was led by the same Jim Clark who started Netscape—a company that did much to make Java successful.</p>
+<p class="noindent">The Green project (with a new name of “First Person, Inc.”) spent all of 1993 and half of 1994 looking for people to buy its technology. No one was found. (Patrick Naughton, one of the founders of the group and the person who ended up doing most of the marketing, claims to have accumulated 300,000 air miles in trying to sell the technology.) First Person was dissolved in 1994.</p>
+<p class="noindent">While all of this was going on at Sun, the World Wide Web part of the Internet was growing bigger and bigger. The key to the World Wide Web was the browser translating hypertext pages to the screen. In 1994, most people were using Mosaic, a noncommercial web browser that came out of the supercomputing center at the University of Illinois in 1993. (Mosaic was partially written by Marc Andreessen as an undergraduate student on a work-study project, for $6.85 an hour. He moved on to fame and fortune as one of the cofounders and the chief of technology at Netscape.)</p>
+<p class="noindent">In the <em>SunWorld</em> interview, Gosling says that in mid-1994, the language developers realized that “We could build a real cool browser. It was one of the few things in the client/server mainstream that needed some of the weird things we’d done: architecture-neutral, real-time, reliable, secure—issues that weren’t terribly important in the workstation world. So we built a browser.”</p>
+<p class="noindent">The actual browser was built by Patrick Naughton and Jonathan Payne and evolved into the HotJava browser, which was designed to show off the power of Java. The browser was capable of executing Java code inside web pages. This “proof of technology” was shown at SunWorld ’95 on May 23, 1995, and inspired the Java craze that continues today.</p>
+<p class="noindent">Sun released the first version of Java in early 1996. People quickly realized that Java 1.0 was not going to cut it for serious application development. Sure, you could use Java 1.0 to make a nervous text applet that moved text randomly around in a canvas. But you couldn’t even <em>print</em> in Java 1.0. To be blunt, Java 1.0 was not ready for prime time. Its successor, version 1.1, filled in the most obvious gaps, greatly improved the reflection capability, and added a new event model for GUI programming. It was still rather limited, though.</p>
+<p class="noindent">The big news of the 1998 JavaOne conference was the upcoming release of Java 1.2, which replaced the early toylike GUI and graphics toolkits with sophisticated scalable versions. Three days (!) after its release in December <span epub:type="pagebreak" id="page_12"></span>1998, Sun’s marketing department changed the name to the catchy <em>Java 2 Standard Edition Software Development Kit Version 1.2</em>.</p>
+<p class="noindent">Besides the Standard Edition, two other editions were introduced: the Micro Edition for embedded devices such as cell phones, and the Enterprise Edition for server-side processing. This book focuses on the Standard Edition.</p>
+<p class="noindent">Versions 1.3 and 1.4 of the Standard Edition were incremental improvements over the initial Java 2 release, with an ever-growing standard library, increased performance, and, of course, quite a few bug fixes. During this time, much of the initial hype about Java applets and client-side applications abated, but Java became the platform of choice for server-side applications.</p>
+<p class="noindent">Version 5.0 was the first release since version 1.1 that updated the Java <em>language</em> in significant ways. (This version was originally numbered 1.5, but the version number jumped to 5.0 at the 2004 JavaOne conference.) After many years of research, generic types (roughly comparable to C++ templates) have been added—the challenge was to add this feature without requiring changes in the virtual machine. Several other useful language features were inspired by C#: a “for each” loop, autoboxing, and annotations.</p>
+<p class="noindent">Version 6 (without the .0 suffix) was released at the end of 2006. Again, there were no language changes but additional performance improvements and library enhancements.</p>
+<p class="noindent">As datacenters increasingly relied on commodity hardware instead of specialized servers, Sun Microsystems fell on hard times and was purchased by Oracle in 2009. Development of Java stalled for a long time. In 2011, Oracle released a new version, with simple enhancements, as Java 7.</p>
+<p class="noindent">In 2014, the release of Java 8 followed, with the most significant changes to the Java language in almost two decades. Java 8 embraces a “functional” style of programming that makes it easy to express computations that can be executed concurrently. All programming languages must evolve to stay relevant, and Java has shown a remarkable capacity to do so.</p>
+<p class="noindent">The main feature of Java 9 goes all the way back to 2008. At that time, Mark Reinhold, the chief engineer of the Java platform, started an effort to break up the huge, monolithic Java platform. This was to be achieved by introducing <em>modules</em>, self-contained units of code that provide a specific functionality. It took eleven years to design and implement a module system that is a good fit for the Java platform, and it remains to be seen whether it is also a good fit for Java applications and libraries. Java 9, released in 2017, has other appealing features that we cover in this book.</p>
+<p class="noindent"><span epub:type="pagebreak" id="page_13"></span>Starting in 2018, Java versions are released every six months, to enable faster introduction of features. Certain versions, such as Java 11, are designated as long-term support versions.</p>
+<p class="noindent"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#tab1_1">Table 1.1</a> shows the evolution of the Java language and library. As you can see, the size of the application programming interface (API) has grown tremendously.</p>
+<div class="group">
+<p class="tabcap" id="tab1_1"><strong>Table 1.1</strong> Evolution of the Java Language</p>
+<table class="top">
+<thead>
+<tr>
+<td class="borderbc"><p class="table"><strong>Version</strong></p></td>
+<td class="borderbc"><p class="table"><strong>Year</strong></p></td>
+<td class="borderbc"><p class="table"><strong>New Language Features</strong></p></td>
+<td class="borderbc"><p class="table"><strong>Number of Classes and Interfaces</strong></p></td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="borderb"><p class="table">1.0</p></td>
+<td class="borderb"><p class="table">1996</p></td>
+<td class="borderb"><p class="table">The language itself</p></td>
+<td class="borderb"><p class="table">211</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">1.1</p></td>
+<td class="borderb"><p class="table">1997</p></td>
+<td class="borderb"><p class="table">Inner classes</p></td>
+<td class="borderb"><p class="table">477</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">1.2</p></td>
+<td class="borderb"><p class="table">1998</p></td>
+<td class="borderb"><p class="table">The <code>strictfp</code> modifier</p></td>
+<td class="borderb"><p class="table">1,524</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">1.3</p></td>
+<td class="borderb"><p class="table">2000</p></td>
+<td class="borderb"><p class="table">None</p></td>
+<td class="borderb"><p class="table">1,840</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">1.4</p></td>
+<td class="borderb"><p class="table">2002</p></td>
+<td class="borderb"><p class="table">Assertions</p></td>
+<td class="borderb"><p class="table">2,723</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">5.0</p></td>
+<td class="borderb"><p class="table">2004</p></td>
+<td class="borderb"><p class="table">Generic classes, “for each” loop, varargs, autoboxing, metadata, enumerations, static import</p></td>
+<td class="borderb"><p class="table">3,279</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">6</p></td>
+<td class="borderb"><p class="table">2006</p></td>
+<td class="borderb"><p class="table">None</p></td>
+<td class="borderb"><p class="table">3,793</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">7</p></td>
+<td class="borderb"><p class="table">2011</p></td>
+<td class="borderb"><p class="table">Switch with strings, diamond operator, binary literals, exception handling enhancements</p></td>
+<td class="borderb"><p class="table">4,024</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">8</p></td>
+<td class="borderb"><p class="table">2014</p></td>
+<td class="borderb"><p class="table">Lambda expressions, interfaces with default methods, stream and date/time libraries</p></td>
+<td class="borderb"><p class="table">4,240</p></td>
+</tr>
+<tr>
+<td class="borderb"><p class="table">9</p></td>
+<td class="borderb"><p class="table">2017</p></td>
+<td class="borderb"><p class="table">Modules, miscellaneous language and library enhancements</p></td>
+<td class="borderb"><p class="table">6,005</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 class="h3" id="sec1_5">1.5 Common Misconceptions about Java</h3>
+<p class="noindent">This chapter closes with a commented list of some common misconceptions about Java.</p>
+<p class="noindent"><em>Java is an extension of HTML.</em></p>
+<p class="noindent">Java is a programming language; HTML is a way to describe the structure of a web page. They have nothing in common except that there are HTML extensions for placing Java applets on a web page.</p>
+<p class="noindent"><span epub:type="pagebreak" id="page_14"></span><em>I use XML, so I don’t need Java.</em></p>
+<p class="noindent">Java is a programming language; XML is a way to describe data. You can process XML data with any programming language, but the Java API contains excellent support for XML processing. In addition, many important XML tools are implemented in Java. See Volume II for more information.</p>
+<p class="noindent"><em>Java is an easy programming language to learn.</em></p>
+<p class="noindent">No programming language as powerful as Java is easy. You always have to distinguish between how easy it is to write toy programs and how hard it is to do serious work. Also, consider that only seven chapters in this book discuss the Java language. The remaining chapters of both volumes show how to put the language to work, using the Java <em>libraries</em>. The Java libraries contain thousands of classes and interfaces and tens of thousands of functions. Luckily, you do not need to know every one of them, but you do need to know surprisingly many to use Java for anything realistic.</p>
+<p class="noindent"><em>Java will become a universal programming language for all platforms.</em></p>
+<p class="noindent">This is possible in theory. But in practice, there are domains where other languages are entrenched. Objective C and its successor, Swift, are not going to be replaced on iOS devices. Anything that happens in a browser is controlled by JavaScript. Windows programs are written in C++ or C#. Java has the edge in server-side programming and in cross-platform client applications.</p>
+<p class="noindent"><em>Java is just another programming language.</em></p>
+<p class="noindent">Java is a nice programming language; most programmers prefer it to C, C++, or C#. But there have been hundreds of nice programming languages that never gained widespread popularity, whereas languages with obvious flaws, such as C++ and Visual Basic, have been wildly successful.</p>
+<p class="noindent">Why? The success of a programming language is determined far more by the utility of the <em>support system</em> surrounding it than by the elegance of its syntax. Are there useful, convenient, and standard libraries for the features that you need to implement? Are there tool vendors that build great programming and debugging environments? Do the language and the toolset integrate with the rest of the computing infrastructure? Java is successful because its libraries let you easily do things such as networking, web applications, and concurrency. The fact that Java reduces pointer errors is a bonus, so programmers seem to be more productive with Java—but these factors are not the source of its success.</p>
+<p class="noindent"><em>Java is proprietary, and should therefore be avoided.</em></p>
+<p class="noindent">When Java was first created, Sun gave free licenses to distributors and end users. Although Sun had ultimate control over Java, they involved many <span epub:type="pagebreak" id="page_15"></span>other companies in the development of language revisions and the design of new libraries. Source code for the virtual machine and the libraries has always been freely available, but only for inspection, not for modification and redistribution. Java was “closed source, but playing nice.”</p>
+<p class="noindent">This situation changed dramatically in 2007, when Sun announced that future versions of Java would be available under the General Public License (GPL), the same open source license that is used by Linux. Oracle has committed to keeping Java open source. There is only one fly in the ointment—patents. Everyone is given a patent grant to use and modify Java, subject to the GPL, but only on desktop and server platforms. If you want to use Java in embedded systems, you need a different license and will likely need to pay royalties. However, these patents will expire within the next decade, and at that point Java will be entirely free.</p>
+<p class="noindent"><em>Java is interpreted, so it is too slow for serious applications.</em></p>
+<p class="noindent">In the early days of Java, the language was interpreted. Nowadays, the Java virtual machine uses a just-in-time compiler. The “hot spots” of your code will run just as fast in Java as they would in C++, and in some cases even faster.</p>
+<p class="noindent"><em>All Java programs run inside a web page.</em></p>
+<p class="noindent">All Java <em>applets</em> run inside a web browser. That is the definition of an applet—a Java program running inside a browser. But most Java programs are stand-alone applications that run outside of a web browser. In fact, many Java programs run on web servers and produce the code for web pages.</p>
+<p class="noindent"><em>Java programs are a major security risk.</em></p>
+<p class="noindent">In the early days of Java, there were some well-publicized reports of failures in the Java security system. Researchers viewed it as a challenge to find chinks in the Java armor and to defy the strength and sophistication of the applet security model. The technical failures that they found have all been quickly corrected. Later, there were more serious exploits, to which Sun, and later Oracle, responded too slowly. Browser manufacturers reacted, and perhaps overreacted, by deactivating Java by default. To keep this in perspective, consider the far greater number of virus attacks in Windows executable files that cause real grief but surprisingly little criticism of the weaknesses of the attacked platform. Even 20 years after its creation, Java is far safer than any other commonly available execution platform.</p>
+<p class="noindent"><em>JavaScript is a simpler version of Java.</em></p>
+<p class="noindent">JavaScript, a scripting language that can be used inside web pages, was invented by Netscape and originally called LiveScript. JavaScript has a syntax <span epub:type="pagebreak" id="page_16"></span>that is reminiscent of Java, and the languages’ names sound similar, but otherwise they are unrelated. In particularly, Java is <em>strongly typed</em>—the compiler catches many errors that arise from type misuse. In JavaScript, such errors are only found when the program runs, which makes their elimination far more laborious.</p>
+<p class="noindent"><em>With Java, I can replace my desktop computer with a cheap “Internet appliance.”</em></p>
+<p class="noindent">When Java was first released, some people bet big that this was going to happen. Companies produced prototypes of Java-powered network computers, but users were not ready to give up a powerful and convenient desktop for a limited machine with no local storage. Nowadays, of course, the world has changed, and for a large majority of end users, the platform that matters is a mobile phone or tablet. The majority of these devices are controlled by the Android platform, which is a derivative of Java. Learning Java programming will help you with Android programming as well.</p>
+<div class="annotator-outer annotator-viewer viewer annotator-invert-x annotator-hide" style="top: 8748.84px; left: 295.5px; width: 269px;">
+  <ul class="annotator-widget annotator-listing"><li class="annotator-annotation annotator-item annotator-view-clicker without-note">
+	<ul class="annotator-controls expandUp">
+    
+		<li class="copy"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="annotator-copy">Copy</a></li>
+    
+    <li><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" title="Delete" class="annotator-delete">Undo Highlight</a></li>
+		<li>
+      <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" title="Edit" class="annotator-edit expandUp">
+        
+          Add Note
+        
+      </a></li>
+	</ul>
+<div><i>No Comment</i></div></li></ul>
+</div><div class="annotator-modal-wrapper annotator-editor-modal annotator-editor annotator-hide" style="display: none;">
+	<div class="annotator-outer editor">
+		<h2 class="title">Highlight</h2>
+		<form class="annotator-widget">
+			<ul class="annotator-listing">
+			<li class="annotator-item"><textarea id="annotator-field-0" placeholder="Add a note using markdown (optional)" class="js-editor" maxlength="750"></textarea></li></ul>
+			<div class="annotator-controls">
+				<a class="link-to-markdown" href="https://daringfireball.net/projects/markdown/basics" target="_blank">?</a>
+				<ul>
+					<li class="delete annotator-hide"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#delete" class="annotator-delete-note button positive">Delete Note</a></li>
+					<li class="save"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#save" class="annotator-save annotator-focus button positive">Save Note</a></li>
+					<li class="cancel"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#cancel" class="annotator-cancel button">Cancel</a></li>
+				</ul>
+			</div>
+		</form>
+	</div>
+</div><div class="annotator-modal-wrapper annotator-delete-confirm-modal" style="display: none;">
+  <div class="annotator-outer">
+    <h2 class="title">Highlight</h2>
+      <a class="js-close-delete-confirm annotator-cancel close" href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#close">Close</a>
+      <div class="annotator-widget">
+         <div class="delete-confirm">
+            Are you sure you want to permanently delete this note?
+         </div>
+         <div class="annotator-controls">
+            <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#cancel" class="annotator-cancel button js-cancel-delete-confirm">No, I changed my mind</a>
+            <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#delete" class="annotator-delete button positive js-delete-confirm">Yes, delete it</a>
+         </div>
+       </div>
+   </div>
+</div><div class="annotator-adder" style="display: none; top: 8781.81px; left: 300.5px; width: 259px;">
+	<ul class="adders expandUp">
+		
+		<li class="copy"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#">Copy</a></li>
+		
+		<li class="add-highlight"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#">Add Highlight</a></li>
+		<li class="add-note"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#">
+			Add Note
+		</a></li>
+		
+	</ul>
+</div></div></div>
+
+
+
+  <div class="t-sbo-prev sbo-prev sbo-nav-bottom">
+  
+    
+      
+        <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/ack.xhtml" class="prev nav-link">
+      
+          <span aria-hidden="true" class="pagination-label t-prev-label">Prev</span>
+          <span class="visuallyhidden">Previous Chapter</span>
+          <div class="pagination-title t-prev-title">Acknowledgments</div>
+        </a>
+    
+  
+  </div>
+
+  <div class="t-sbo-next sbo-next sbo-nav-bottom">
+  
+    
+      
+        <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter2.xhtml" class="next nav-link">
+      
+          <span aria-hidden="true" class="pagination-label t-next-label">Next</span>
+          <span class="visuallyhidden">Next Chapter</span>
+          <div class="pagination-title t-next-title">Chapter 2: The Java Programming Environment</div>
+        </a>
+    
+  
+  </div>
+
+
+        
+    </section>
+  </div>
+<section class="sbo-saved-archives"></section>
+
+
+
+          
+          
+  
+
+
+
+
+    
+    
+      <div id="js-subscribe-nag" class="subscribe-nag clearfix trial-panel t-subscribe-nag collapsed slideUp">
+        
+        
+          
+          
+            <p class="usage-data">Find answers on the fly, or master something new. Subscribe today. <a href="https://learning.oreilly.com/subscribe/" class="ga-active-trial-subscribe-nag">See pricing options.</a></p>
+          
+
+          
+        
+        
+
+      </div>
+
+    
+    
+
+
+
+        
+      </div>
+      
+
+
+
+
+  <footer class="pagefoot t-pagefoot" style="padding-bottom: 69px;">
+    <a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" class="icon-up" style="display: block;"><div class="visuallyhidden">Back to top</div></a>
+    <ul class="js-footer-nav">
+      
+        <li><a class="t-recommendations-footer" href="https://learning.oreilly.com/r/">Recommended</a></li>
+      
+      <li>
+      <a class="t-queue-footer" href="https://learning.oreilly.com/playlists/">Playlists</a>
+      </li>
+      
+        <li><a class="t-recent-footer" href="https://learning.oreilly.com/history/">History</a></li>
+        <li><a class="t-topics-footer" href="https://learning.oreilly.com/topics?q=*&amp;limit=21">Topics</a></li>
+      
+      <li><a class="t-settings-footer js-settings" href="https://learning.oreilly.com/u/preferences/">Settings</a></li>
+      <li class="full-support"><a href="https://www.oreilly.com/online-learning/support/">Support</a></li>
+      <li><a href="https://www.oreilly.com/online-learning/apps.html">Get the App</a></li>
+      <li><a href="https://learning.oreilly.com/accounts/logout/">Sign Out</a></li>
+    </ul>
+    <span class="copyright">© 2019 <a href="https://learning.oreilly.com/" target="_blank">Safari</a>.</span>
+    <a href="https://learning.oreilly.com/terms/">Terms of Service</a> /
+    <a href="https://www.oreilly.com/privacy.html">Privacy Policy</a>
+  </footer>
+
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"applicationTime":278,"applicationID":"3275661,67267027,67267028","transactionName":"YgdaZ0NSW0cEB0RdWltNfkZfUEFdCgofXFBHDVYdR1pQQxZeRl1QQj1aWkU=","queueTime":0,"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"510f1a6865","agent":""}</script>
+
+
+    
+    <script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/saved_resource" charset="utf-8"></script>
+    <script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/saved_resource(1)" charset="utf-8"></script><script type="text/javascript" id="">(function(){window.medalliaUserIdentifier=document.documentElement.dataset.userUuid;window.medalliaUserName=document.documentElement.dataset.username})();</script>
+<script type="text/javascript" id="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/embed.js.download"></script><script type="text/javascript" id="">!function(b,e,f,g,a,c,d){b.fbq||(a=b.fbq=function(){a.callMethod?a.callMethod.apply(a,arguments):a.queue.push(arguments)},b._fbq||(b._fbq=a),a.push=a,a.loaded=!0,a.version="2.0",a.queue=[],c=e.createElement(f),c.async=!0,c.src=g,d=e.getElementsByTagName(f)[0],d.parentNode.insertBefore(c,d))}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","1732687426968531");fbq("track","PageView");</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1732687426968531&amp;ev=PageView&amp;noscript=1"></noscript><div style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.19682280719158052"><img style="width:0px; height:0px; display:none; visibility:hidden;" id="batBeacon0.2821674810257855" width="0" height="0" alt="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/0"></div>
+
+
+
+  
+
+<script src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/saved_resource(2)" type="text/javascript"></script><div class="annotator-notice"></div><div class="font-flyout" style="top: 200.8px; left: 1450px;"><div class="font-controls-panel">
+	<div class="nightmodes">
+		<ul>
+			<li class="day"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" id="day-mode" title="Day Mode">
+				<i class="fa fa-sun-o"></i>
+				<span>Day Mode</span></a></li>
+			<li class="cloudy"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" id="cloudy-mode" title="Cloudy Mode">
+				<i class="fa fa-cloud"></i>
+				<span>Cloud Mode</span>
+			</a></li>
+			<li class="night"><a href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#" id="night-mode" title="Night Mode">
+				<i class="fa fa-moon-o"></i>
+				<span>Night Mode</span>
+			</a></li>
+		</ul>
+	</div>
+
+	<div class="font-resizer resizer">
+		<div class="draggable-containment-wrapper">
+			<i class="fa fa-font left"></i>
+			<span class="filler" style="width: 50%;"></span>
+			<div id="js-font-size-draggable" class="draggable ui-widget-content ui-draggable ui-draggable-handle" style="position: relative; left: 80px;"></div>
+			<i class="fa fa-font right"></i>
+		</div>
+	</div>
+
+	<div class="column-resizer resizer">
+		<div class="draggable-containment-wrapper">
+			<i class="fa fa-compress left"></i>
+			<span class="filler" style="width: 50%;"></span>
+			<div id="js-column-size-draggable" class="draggable ui-widget-content ui-draggable ui-draggable-handle" style="position: relative; left: 80px;"></div>
+			<i class="fa fa-expand right"></i>
+		</div>
+	</div>
+
+	<a id="reset" class="button" href="https://learning.oreilly.com/library/view/core-java-volume/9780135167199/chapter1.xhtml#">Reset</a>
+</div>
+</div><script type="text/javascript" async="" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/generic1554997204592.js.download" charset="UTF-8"></script><div style="display: none; visibility: hidden;"><script>(function(){if(null!==document.querySelector('iframe[title\x3d"fb:share_button Facebook Social Plugin"]')&&void 0!==document.querySelector('iframe[title\x3d"fb:share_button Facebook Social Plugin"]')){var a=!1;window.addEventListener("blur",function(){a&&dataLayer.push({event:"eventTracker",eventCat:"social",eventAct:"share",eventLbl:"facebook",eventVal:0,nonInteraction:0})});document.querySelector('iframe[title\x3d"fb:share_button Facebook Social Plugin"]').addEventListener("mouseover",function(){window.focus();
+a=!0});document.querySelector('iframe[title\x3d"fb:share_button Facebook Social Plugin"]').addEventListener("mouseout",function(){a=!1})}try{window.twttr=function(b,a,d){var c,e=b.getElementsByTagName(a)[0];if(!b.getElementById(d))return b=b.createElement(a),b.id=d,b.src="//platform.twitter.com/widgets.js",e.parentNode.insertBefore(b,e),window.twttr||(c={_e:[],ready:function(a){c._e.push(a)}})}(document,"script","twitter-wjs"),twttr.ready(function(a){a.events.bind("tweet",trackTwitter)})}catch(b){}})();
+null!==document.querySelector(".IN-widget")&&void 0!==document.querySelector(".IN-widget")&&document.querySelector(".IN-widget").addEventListener("click",function(){dataLayer.push({event:"eventTracker",eventCat:"social",eventAct:"share",eventLbl:"linkedin",eventVal:0,nonInteraction:0})});
+function trackTwitter(a){a&&(a.target&&"IFRAME"==a.target.nodeName&&(opt_target=extractParamFromUri(a.target.src,"url")),dataLayer.push({event:"eventTracker",eventCat:"social",eventAct:"share",eventLbl:"twitter",eventVal:0,nonInteraction:0}))}function extractParamFromUri(a,b){if(a){var c=new RegExp("[\\?\x26#]"+b+"\x3d([^\x26#]*)");c=c.exec(a);if(null!=c)return unescape(c[1])}};</script></div><span><div id="KampyleAnimationContainer" style="z-index: 2147483000; border: 0px; position: fixed; display: block; width: 0px; height: 0px;"></div></span><iframe scrolling="no" frameborder="0" allowtransparency="true" src="./Chapter 1_ An Introduction to Java - Core Java Volume I—Fundamentals, Eleventh Edition_files/widget_iframe.2e9f365dae390394eb8d923cba8c5b11.html" title="Twitter settings iframe" style="display: none;"></iframe></body></html>

@@ -1,0 +1,14 @@
+:root {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: auto;
+}
+
+body {
+    width: 90%;
+    max-width: 900px;
+    margin: 100px auto;
+    font: .9em/1.2 Arial, Helvetica, sans-serif
+}

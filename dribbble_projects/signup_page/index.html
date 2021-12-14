@@ -1,0 +1,62 @@
+<!-- Reference: https://dribbble.com/shots/14372444-Sign-Up-Sign-In-Register/attachments/6041664?mode=media -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page by Shivang Trivedi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <header>
+       <h1>Register</h1>
+    </header>
+    <main>
+        <h2>Manage your Lottery Efficiently</h2>
+        <p>Let's get you all set up so you can verify your personal account and being setting up your profile</p>
+        <form action="" method="post">
+            <ul id="signup_details">
+                <li>
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name">
+                </li>
+                <li>
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name">
+                </li>
+                <li>
+                    <label for="phone_number">Phone Number</label>
+                    <input type="number" id="phone_number" name="phone_number">
+                </li>
+                <li>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email_address">
+                </li>
+                <li>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </li>
+                <li>
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password">
+                </li>
+            </ul>
+            <ul id="signup_checkbox_buttons">
+                <li>
+                    <label for="receive_lottery_emails">Yes, I want to receive Lottery Display emails</label>
+                    <input type="checkbox" name="receive_lottery_emails" id="receive_lottery_emails">   
+                </li>
+                <li>
+                    <label for="terms_privacy_policy_and_fees">I agree to all the Terms, Privacy Policy and Fees</label>
+                    <input type="checkbox" name="terms_privacy_policy_and_fees" id="terms_privacy_policy_and_fees">
+                </li>
+            </ul>
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already have an account? Log in</p>
+    </main>
+    </div>
+</body>
+</html>

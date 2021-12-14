@@ -1,0 +1,131 @@
+CSS Building Blocks
+    CSS Box Model (Made up of 4 parts):
+        Everything in CSS is a box. In CSS we broadly have two types of boxes (defined by "display" property) — block boxes and inline boxes. These characteristics refer to how the box behaves in terms of page flow, and in relation to other boxes on the page:
+
+        If a box is defined as a block, it will behave in the following ways:
+
+            1. The box will break onto a new line.
+            2. The box will extend in the inline direction to fill the space available in its container. In most cases this means that the box will become as wide as its container, filling up 100% of the space available.
+            3. The width and height properties are respected.
+            4. Padding, margin and border will cause other elements to be pushed away from the box
+
+        Unless we decide to change the display type to inline, elements such as headings (e.g. <h1>) and <p> all use block as their outer display type by default.
+
+        If a box has an outer display type of inline, then:
+
+            1. The box will not break onto a new line.
+            2. The width and height properties will not apply.
+            3. Vertical padding, margins, and borders will apply but will not cause other inline boxes to move away from the box.
+            4. Horizontal padding, margins, and borders will apply and will cause other inline boxes to move away from the box.
+
+        The <a> element, used for links, <span>, <em> and <strong> are all examples of elements that will display inline by default.
+
+        The above display types are applicable on the outer side of the box. There are also display types which are applicable on the inner side of the box (For Ex: Flex, Grid..etc).
+        For Ex:
+        When the inner display type is flex (display: flex), the outer display type is block while inner display type is 'flex'.
+
+        1. Content box (can be sized using properties like "width" and "height")
+        2. Padding box
+        3. Border box
+        4. Margin box
+
+        In order to calculate total width of the box, using standard box-model (box-sizing: content-box), will be width of the box, left and right padding, left and right border.
+
+
+    Overflowing content:
+        Overflow happens when there is too much content to fit in a container.
+
+        Overflow property:
+            overflow property controls element's overflow. The default value of overflow is 'visible' (this will make element's overflowed content visible outside the box). when it is set to 'hidden', it hides overflowed content.
+            when set it to 'scroll', shows visible scrollbars around the content (even if the content is not wide and high enough to be scrollable). with 'overflow-y' property, one can make the element scrollable along the y-axis.
+            Similarly, 'overflow-x' makes element scrollable along x-axis.
+
+        You can specify x and y scrolling using the overflow property, passing two values. If two keywords are specified, the first applies to overflow-x and the second applies to overflow-y. Otherwise, both overflow-x and 
+        overflow-y are set to the same value. 
+
+        If you only want scrollbars to appear when there is more content than can fit in the box, use overflow: auto. This allows the browser to determine if it should display scrollbars.
+
+        When you use a value of overflow such as scroll or auto, you create a Block Formatting Context (BFC). The content of the box that you have changed the value of overflow for acquires a self-contained layout. Content 
+        outside the container cannot poke into the container, and nothing can poke out of that container into the surrounding layout. This enables scrolling behavior, as all box content needs to be contained and not overlap,
+        in order to create a consistent scrolling experience.
+
+
+    CSS Values and Units:
+        When properties like margin and padding are provided with percentage values, those values are with respect to inline width of the parent-container.
+
+        Images, media and form elements:
+            Images and video are described as replaced elements. Certain replaced elements, such as images and video, are also described as having an aspect ratio. This means that it has a size in both the horizontal (x) and 
+            vertical (y) dimensions, and will be displayed using the intrinsic dimensions of the file by default.
+
+        By default, if size of the image is smaller or larger than the parent-container, it fills the parent container as per its dimensions or overflow it (can use max-width property to resize the image so that it fills 
+        the parent-container and not get overflowed).
+
+        The object-fit property can help you here. When using object-fit the replaced element can be sized to fit a box in a variety of ways.
+
+        Below we have used the value cover, which sizes the image down, maintaining the aspect ratio so that it neatly fills the box. As the aspect ratio is maintained some parts of the image will be cropped by the box.
+
+        If we use contain as a value the image will be scaled down until it is small enough to fit inside the box. This will result in "letterboxing" if it is not the same aspect ratio as the box.
+
+        One can use 'fill' value to stretch the image in order to fit in parent-container. Alternatively, one can use 'width: 100%' and 'height:100%'. Using one of the both ways, image may become pixelated.
+
+
+
+CSS Layout
+    Introduction to CSS layout
+        CSS page layout techniques allow us to take elements contained in a web page and control where they are positioned relative to their default position in normal layout flow, the other elements around them, their parent container, or the main viewport/window.
+
+        Normal Flow:
+            It is how the browser lays out HTML pages by default when you do nothing to control page layout (meaning: the order of elements in the source code will be maintained when the html is viewed in the browser).
+
+        The direction in which block element contents are laid out is described as the Block Direction. The Block Direction runs vertically in a language such as English, which has a horizontal writing mode.  It would run 
+        horizontally in any language with a Vertical Writing Mode, such as Japanese.
+
+        The display property: Everything in normal flow has a value of display. The property can have many values, two of them being 'flex' and 'grid'.
+
+        Flexbox
+            If you want to layout things in one dimension (row or column - defined by flex-direction), flexbox is the way to go. The property-value is applied to the parent element, and its children behave as flex-items. If the flex-direction has value row, its children items behave as columns and vice-versa.
+        
+        Grid
+            Meant for two dimensions.
+
+        Floats
+            Floating an element changes the behavior of that element and the block level elements that follow it in normal flow. The element is moved to the left or right and removed from normal flow, and the surrounding content floats around the floated item.
+
+            The float property has four possible values:
+                a. left
+                b right
+                c. none
+                d. inherit (specifices that the values of the float property should be inherited from the element's parent element)
+
+        Positioning Techniques:
+            Allow you to move an element from where it would be placed when in normal flow to another location. Five types of positioning.
+                a. Static: default; element positioned in the document normal flow.
+                b. Relative: Allow you to modify an element's position moving it relative to its position in normal flow.
+                c. Absolute: moves an element completely out of the page's normal layout and is taken to its own separate layer. It positions the element relative to the edges of the pages's <html> element (or its nearest positioned ancestor)
+                d. Fixed: Similar to absolute positioning, (fixes an element relative to the browser, not another element)
+                c. Sticky: acts like 'position: static', until it hits defined offset from the viewport, where it acts like 'position: fixed'
+
+        Flexbox in detail
+            Flex items are laid out along two axis: 'main-axis' and 'cross-axis'. Main-axis are laid out alogn the direction in which flex-items are laid out while the cross-axis is always perpendicular to main-axis. Main-axis starts from 'main-start' (starting-point of the axis) and 'main-end' (ending-point of the axis). Similarly, cross-axis has 'cross-start' and 'cross-end'. The element which behaves as a parent element (applied 'display: flex') is called the 'flex-container' while the child-items are called as 'flex-items'.
+
+            How to determine 'main-axis'?
+                Simple, depends on the property 'flex-direction'. If it's value is 'row', main-axis runs from left to right (the way browser's default-language works). 
+
+            Wrapping: 
+                If the parent-container has fixed width or height, flex-items will overflow their container. use the combo 'flex-wrap: wrap'.
+
+            Flex-Flow:
+                Shorthand for combination of 'flex-direction' and 'flex-wrap'. 
+                    flex-direction: row;
+                    flex-wrap: wrap;
+
+                    flex-flow: row wrap;
+
+            Flex:
+                The property dictates how much each flex-item in proportion to other flex-items of the flex-container. For example: let's say there are four flex-items. Each item except 4th item has 'flex: 1' and 4th item has 'flex:3'. All 4 flex-items are spaced out along main-axis with first 3 elements taking 1/6th (6 because of total of flex-values of each flex-item) of the space whereas 4th element taking 1/2th of the space.
+
+                if 'flex: 1 200px;', each flex-item is given minimum of 200px and the rest of the space is proportionally divided as mentioned above. The same property can be broken down as follows:
+                    'flex-grow: 1'
+                    'flex-basis: 200px'
+                
+                Flex-grow: is the value how much flex-item will receive the remaining-space (space which is left after being distributed to flex-items from total size (also know as main-size - size along main-axis) of the flex-container).
