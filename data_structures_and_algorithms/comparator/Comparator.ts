@@ -1,4 +1,6 @@
 export default class Comparator {
+    private compare: Function;
+    private compareFunction: Function;
     /**
      * Constructor
      * @param {function(a: *, b: *)} [compareFunction] - It may be custom compare function that, let's say may compare custom objects together.
@@ -72,7 +74,7 @@ export default class Comparator {
     /**
      * Reverses the comparison order
      */
-     lessThanEqual(a, b){
+     reverse(){
         const compareOriginal = this.compare;
         this.compare = (a,b) => compareOriginal(b, a);
     }
