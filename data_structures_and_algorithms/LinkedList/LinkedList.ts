@@ -1,4 +1,4 @@
-import Comparator from "./comparator/Comparator";
+import Comparator from "../utility/Comparator";
 
 class LinkedListNode {
     public value: string;
@@ -13,7 +13,7 @@ class LinkedListNode {
     }
 }
 
-class LinkedList {
+export default class LinkedList {
     private head: LinkedListNode;
     private tail: LinkedListNode;
     private compare: Comparator;
@@ -74,5 +74,78 @@ class LinkedList {
         }
 
         return deleteNode;
+    }
+
+    find({value = undefined, callback = undefined}) {
+        if(!this.head){
+            return null;
+        }
+
+        let currentNode = this.head;
+        while(currentNode) {
+            if(callback && callback(currentNode.value)){
+                return currentNode;
+            }
+
+            if(value !== undefined && this.compare.equal(currentNode.value, value)){
+                return currentNode;
+            }
+            currentNode = currentNode.next;
+        }
+        return null;
+    }
+
+    deleteTail() {
+        if(!this.tail) {
+            return null;
+        }
+
+        let currentNode = this.head;
+        while(currentNode !== this.tail || currentNode.next !== this.tail) {
+            currentNode = currentNode.next;
+        }
+        if(currentNode === this.tail) {
+            currentNode.next = null;
+            this.head.next = null;
+        }
+        currentNode.next = null;
+        return this.tail;
+    }
+
+    deleteHead() {
+        if(!this.head){
+            return null;
+        }
+
+        if(this.head.next){
+            this.head = this.head.next;
+        }else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return this.head;
+    }
+
+    fromArray(values) {
+        values.forEach(value => this.append(value));
+        return this;
+    }
+
+    toArray() {
+        const nodes = [];
+
+        let currentNode = this.head;
+        while(currentNode) {
+            nodes.push(currentNode.value);
+            currentNode = currentNode.next;
+        }
+
+        return nodes;
+    }
+
+
+    toString(callback) {
+        return this.toArray().map(node => node.toString(callback)).toString();
     }
 }
