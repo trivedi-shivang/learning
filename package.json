@@ -4,7 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "lint": "eslint ./src/data_structures_and_algorithms/LinkedList/**",
+    "test": "jest",
+    "coverage": "npm run test -- --coverage",
+    "ci": "npm run lint && npm run coverage",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir src/lib --extensions \".ts,.tsx\" --source-maps inline"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.9.0"
   },
   "repository": {
     "type": "git",
@@ -17,5 +30,7 @@
   },
   "homepage": "https://github.com/Shivang-software-developer/learning#readme",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-plugin-react": "^7.26.1"
+  }
 }
