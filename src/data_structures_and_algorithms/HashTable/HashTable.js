@@ -7,6 +7,7 @@ export default class HashTable {
         this.keys = {};
     }
 
+    // Time Complexity: O(1)
     hash(key) {
         const hash = Array.from(key).reduce((hashAccumulator, keySymbol) => hashAccumulator += keySymbol.charCodeAt(0), 0);
 
@@ -14,6 +15,7 @@ export default class HashTable {
         return hash % this.buckets.length; 
     }
 
+    // O(N)
     set(key, value) {
         const keyHash = this.hash(key);
         this.keys[key] = keyHash;
@@ -26,6 +28,7 @@ export default class HashTable {
         }
     }
 
+    //O(N)
     delete(key) {
         const bucketLinkedList = this.buckets[this.keys[key]];
         delete this.keys[key];
@@ -35,6 +38,7 @@ export default class HashTable {
         }
     }
 
+    // O(N)
     get(key) {
         const bucketLinkedList = this.buckets[this.keys[key]];
         const node = bucketLinkedList.find({callback: nodeValue => nodeValue.key === key});
