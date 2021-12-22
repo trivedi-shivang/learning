@@ -1,5 +1,5 @@
 export default class LinkedListNode {
-    constructor(value, next = null) {
+    constructor(value = null, next = null) {
         this.value = value;
         this.next = next;
     }
