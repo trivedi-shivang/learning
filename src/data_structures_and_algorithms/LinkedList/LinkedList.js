@@ -1,5 +1,5 @@
-import Comparator from '../../utils/Comparator';
-import LinkedListNode from './LinkedListNode';
+import Comparator from '../../utils/Comparator.js';
+import LinkedListNode from './LinkedListNode.js';
 
 export default class LinkedList {
     constructor(comparatorFunction){
@@ -22,6 +22,7 @@ export default class LinkedList {
         if(!this.head){
             this.head = newNode;
             this.tail = newNode;
+            return this;
         }
         this.tail.next = newNode;
         this.tail = newNode;
@@ -110,7 +111,7 @@ export default class LinkedList {
 
     toArray() {
         const nodes = [];
-        const currentNode = this.head;
+        let currentNode = this.head;
         while(currentNode) {
             nodes.push(currentNode);
             currentNode = currentNode.next;
@@ -122,8 +123,8 @@ export default class LinkedList {
         return this.toArray().map(node => node.toString(callback)).toString();
     }
 
-    reverse(){
-        let currentNode = this.head;
+    reverse(head){
+        let currentNode = head || this.head;
         let prevNode = null;
         let nextNode = null;
 
@@ -142,3 +143,7 @@ export default class LinkedList {
         return this;
     }
 }
+
+let linkedList = new LinkedList();
+linkedList.append(10);
+console.log(linkedList.toArray());

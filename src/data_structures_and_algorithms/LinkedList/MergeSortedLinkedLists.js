@@ -1,3 +1,4 @@
+import LinkedList from "./LinkedList";
 import LinkedListNode from "./LinkedListNode";
 
 // Dummy Node method.
@@ -25,4 +26,27 @@ function mergeSortedLinkedLists(headA, headB){
         tail = tail.next;
     }
     return head.next;
+}
+
+
+//Using Recursion (To be avoided in production since space complexity depends on length of linked-list)
+function mergeSortedLinkedLists(headA, headB){
+    if(!headA && !headB) return;
+    else if(!headA) return headB;
+    else if(!headB) return headA;
+    else if(headA.data <= headB.data) {
+        headA.next = mergeSortedLinkedLists(headA.next, headB);
+        return headA;
+    }else {
+        headB.next = mergeSortedLinkedLists(headA, headB.next);
+        return headB;
+    }
+}
+
+function mergeSortedLinkedLists(headA, headB){
+    let linkedListA = new LinkedList(headA);
+    let linkedListB = new LinkedList(headB);
+    linkedListA = linkedListA.reverse();
+    linkedListB = linkedListB.reverse();
+    console.log(linkedListA, linkedListB);
 }
