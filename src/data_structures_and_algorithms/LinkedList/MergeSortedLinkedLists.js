@@ -43,10 +43,7 @@ function mergeSortedLinkedLists(headA, headB){
     }
 }
 
-function mergeSortedLinkedLists(headA, headB){
-    let linkedListA = new LinkedList(headA);
-    let linkedListB = new LinkedList(headB);
-    linkedListA = linkedListA.reverse();
-    linkedListB = linkedListB.reverse();
-    console.log(linkedListA, linkedListB);
+function mergeSortedLinkedLists(){
+    let mergedList = new LinkedList();
+    let 
 }
