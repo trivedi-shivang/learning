@@ -169,3 +169,251 @@ function sym() {
   const result = [...arguments].reduce(symDiff, symDiffObj);
   return Object.keys(result).map((val) => parseInt(val));
 }
+
+// Ceiling of a number using binary search
+function ceilingNumberInArr(arr, target) {
+  if (!arr || !Array.isArray(arr)) return;
+  let left = 0;
+  let right = arr.length - 1;
+  while (left <= right) {
+    let middle = Math.round((left + right) / 2);
+    if (target === arr[middle]) return arr[middle];
+    else {
+      if (target > arr[middle]) left = middle + 1;
+      else right = middle - 1;
+    }
+  }
+  return arr[left] || -1;
+}
+
+ceilingNumberInArr([2, 3, 5, 9, 14, 16, 18], 10);
+
+// smallest letter greater than the target
+function letterGreaterThanTarget(str, target) {
+  if (!str) return;
+  let arr = str.split("");
+  let left = 0;
+  let right = arr.length - 1;
+  while (left <= right) {
+    let middle = Math.round((left + right) / 2);
+    if (target.charCodeAt() >= arr[middle].charCodeAt()) left = middle + 1;
+    else right = middle - 1;
+  }
+  return arr[left] || -1;
+}
+
+letterGreaterThanTarget("cfj", "a"); // c
+letterGreaterThanTarget("cfj", "c"); // f
+
+// using brute force approach
+// O(n) O(1)
+function minAndMaxPosition(arr, target) {
+  if (!arr || !Array.isArray(arr)) return;
+  let start = -1;
+  let end = -1;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      start = i;
+      break;
+    }
+  }
+  if (start !== -1) {
+    for (let j = start; j < arr.length; j++) {
+      if (arr[j] === target) {
+        end = j;
+      }
+    }
+  }
+  return [start, end];
+}
+
+minAndMaxPosition([5, 7, 8, 8, 8, 10], 8);
+
+// using two-pointers approach
+// O(n) O(1)
+function minAndMaxPosition(arr, target) {
+  if (!arr || !Array.isArray(arr)) return;
+  let start = 0;
+  let end = arr.length - 1;
+  while (start <= end) {
+    while (arr[start] < target) {
+      start++;
+    }
+    while (arr[end] > target) {
+      end--;
+    }
+    if (start <= end) {
+      return [start, end];
+    }
+  }
+  return [-1, -1];
+}
+
+minAndMaxPosition([5, 7, 8, 8, 8, 10], 8);
+
+// using binary tree
+function elementPositionInArray(arr, target, findStartIndex) {
+  if (!arr || !Array.isArray(arr)) return;
+  let left = 0;
+  let right = arr.length - 1;
+  let ans = -1;
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+    if (arr[middle] === target) {
+      ans = middle;
+      if (findStartIndex) {
+        right = middle - 1;
+      } else {
+        left = middle + 1;
+      }
+    } else {
+      if (arr[middle] > target) {
+        right = middle - 1;
+      } else {
+        left = middle + 1;
+      }
+    }
+  }
+  return ans;
+}
+
+function minAndMaxPosition(arr, target) {
+  let start = elementPositionInArray(arr, target, true);
+  let end = elementPositionInArray(arr, target, false);
+  return !start ? [-1, -1] : [start, end];
+}
+
+minAndMaxPosition([5, 7, 8, 8, 8, 10], 8);
+
+// find target element in array of infinite size  (cannot use arr.length)
+function findSearchWindow(arr, target) {
+  let start = 0;
+  let end = 1;
+  let windowSize = 2;
+  while (arr[end] !== undefined && target >= arr[end]) {
+    // if (arr[end] < target) {
+    start = end + 1;
+    windowSize *= 2;
+    // if (!arr[start + windowSize]) {
+    //   end =
+    // };
+    end = start + windowSize;
+    // }
+  }
+  return [start, end];
+}
+function findTargetInWindow(arr, target, left, right) {
+  // let left = 0;
+  // let right = arr.length - 1;
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+    if (arr[middle] === target) return target;
+    else {
+      if (arr[middle] < target) {
+        left = middle + 1;
+      } else {
+        right = middle - 1;
+      }
+    }
+  }
+}
+
+function findTargetInArray(arr, target) {
+  let [start, end] = findSearchWindow(arr, target);
+  return findTargetInWindow(arr, target, start, end);
+}
+
+findTargetInArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 14);
+
+// O(logN) O(1)
+function findPeakInMountainArray(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+    if (left === right) return left;
+    if (arr[middle + 1] > arr[middle]) {
+      left = middle + 1;
+    } else {
+      right = middle;
+    }
+  }
+}
+
+findPeakInMountainArray([1, 16, 8, 4, 2, 1]);
+
+function binarySearch(arr, target, left, right) {
+  while (left <= right) {
+    let middle = Math.floor((left + right) / 2);
+    if (arr[middle] === target) return middle;
+    else {
+      if (arr[left] < arr[right]) {
+        if (arr[middle] < target) {
+          left = middle + 1;
+        } else {
+          right = middle - 1;
+        }
+      } else {
+        if (arr[middle] < target) {
+          right = middle - 1;
+        } else {
+          left = middle + 1;
+        }
+      }
+    }
+  }
+  return -1;
+}
+
+function targetPosInMountainArray(arr, target) {
+  let maxIndex = findPeakInMountainArray(arr);
+  let startIndex = binarySearch(arr, target, 0, maxIndex);
+  if (startIndex === -1) {
+    let endIndex = binarySearch(arr, target, maxIndex, arr.length - 1);
+    if (endIndex !== -1) {
+      return endIndex;
+    } else {
+      return -1;
+    }
+  } else {
+    return startIndex;
+  }
+}
+targetPosInMountainArray([1, 16, 8, 4, 2, 1], 8);
+
+// find element in rotated sorted array
+function search(nums, target) {
+  let pivot = findPivot(nums);
+  // if you did not find a pivot, it means the array is not sorted
+  if (pivot === -1) {
+    return binarySearch(nums, target, 0, arr.length - 1);
+  }
+  if (nums[pivot] === target) {
+    return pivot;
+  } else if (target > nums[0]) {
+    return binarySearch(nums, target, 0, pivot);
+  } else {
+    return binarySearch(nums, target, pivot, arr.length - 1);
+  }
+}
+
+function findPivot(arr) {
+  let start = 0;
+  let end = arr.length - 1;
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+    if (mid < end && arr[mid] > arr[mid + 1]) {
+      return mid;
+    }
+    if (mid > start && arr[mid] < arr[mid - 1]) {
+      return mid - 1;
+    }
+    if (arr[mid] <= arr[start]) {
+      end = mid - 1;
+    } else {
+      start = mid + 1;
+    }
+  }
+}
+
+search([4, 5, 6, 7, 0, 1, 2], 5);
