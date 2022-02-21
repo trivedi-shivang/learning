@@ -125,27 +125,47 @@ console.log(
   )
 );
 
-// find the symmetric difference
-// https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference
-let symDiffObj = {};
-function symDiff(val) {
-  if (val in symDiffObj) {
-    delete symDiffObj[val];
-  } else {
-    symDiffObj[val] = true;
-  }
-}
-function sym(...args) {
-  for (let i = 0; i < args.length; i++) {
-    if (Array.isArray(args[i])) {
-      for (let j = 0; j < args[i].length; j++) {
-        symDiff(args[i][j]);
-      }
-    } else {
-      symDiff(args[i]);
+// find the symmetric difference using brute-force
+let result = [];
+function symDiff(arr1, arr2) {
+  // return [
+  //   arr1.filter((val) => !arr2.includes(val)),
+  //   arr2.filter((val) => !arr1.includes(val)),
+  // ];
+
+  for (let val of arr1) {
+    if (!arr2.indexOf(val)) {
+      result.push(val);
     }
   }
-  return Object.keys(symDiffObj).map((val) => parseInt(val));
+  for (let val of arr2) {
+    if (!arr1.indexOf(val)) {
+      result.push(val);
+    }
+  }
+  return result;
+}
+function sym() {
+  let args = Array.prototype.slice.call(arguments);
+  return new Set(args.reduce(symDiff));
 }
 
-sym([1, 2, 3], [5, 2, 1, 4]);
+// find the symmetric difference using hashmap
+// https://www.freecodecamp.org/learn/coding-interview-prep/algorithms/find-the-symmetric-difference
+// O(n) O(n)
+let symDiffObj = {};
+function symDiff(symDiffObj, arr) {
+  let setArr = new Set(arr);
+  for (let val in setArr) {
+    if (val in symDiffObj) {
+      delete symDiffObj[val];
+    } else {
+      symDiffObj[val] = true;
+    }
+  }
+  return symDiffObj;
+}
+function sym() {
+  const result = [...arguments].reduce(symDiff, symDiffObj);
+  return Object.keys(result).map((val) => parseInt(val));
+}
