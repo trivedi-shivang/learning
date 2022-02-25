@@ -381,7 +381,7 @@ function targetPosInMountainArray(arr, target) {
 }
 targetPosInMountainArray([1, 16, 8, 4, 2, 1], 8);
 
-// find element in rotated sorted array
+// find element in rotated sorted array (without duplicates)
 function search(nums, target) {
   let pivot = findPivot(nums);
   // if you did not find a pivot, it means the array is not sorted
@@ -391,9 +391,9 @@ function search(nums, target) {
   if (nums[pivot] === target) {
     return pivot;
   } else if (target > nums[0]) {
-    return binarySearch(nums, target, 0, pivot);
+    return binarySearch(nums, target, 0, pivot - 1);
   } else {
-    return binarySearch(nums, target, pivot, arr.length - 1);
+    return binarySearch(nums, target, pivot + 1, arr.length - 1);
   }
 }
 
@@ -417,3 +417,12 @@ function findPivot(arr) {
 }
 
 search([4, 5, 6, 7, 0, 1, 2], 5);
+
+// find element in rotated sorted array (without duplicates) (todo)
+// https://www.youtube.com/watch?v=W9QJ8HaRvJQ&t=11446s
+
+// find how many times the rotated sorted array was rotated
+function rotationCount() {
+  let pivotIdx = findPivot([4, 5, 6, 7, 0, 1, 2]);
+  return pivotIdx !== -1 ? pivotIdx + 1 : -1;
+}
