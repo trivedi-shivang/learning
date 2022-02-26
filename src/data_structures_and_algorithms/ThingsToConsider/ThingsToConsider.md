@@ -6,6 +6,7 @@
 2. Is it empty or not?
 3. What type of elements does it contain? Of different or same type?
 4. How big is the array?
+5. can I sort the array in place or do I need a separate array?
 
 # Important Conditions to be met
 
@@ -18,3 +19,7 @@
 
 1. Base Case.
 2. return something from the recursive function.
+
+## Always walk through sample input/output. If not provided, generate and verify with interviewwer regarding its validity. Look for patterns, intuition.
+
+## Greedy algorithm normally requires sorting arrays.
