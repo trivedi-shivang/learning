@@ -1,4 +1,5 @@
 // in first iteration largest element is bubbled to the end. in second iteration second largest so on so forth.
+// O(n^2) (Worst) | O(n) Time | O(1) space
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     // checks if swap has happened
