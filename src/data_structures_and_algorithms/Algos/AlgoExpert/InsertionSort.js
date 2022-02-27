@@ -4,12 +4,8 @@
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
     let j = i;
-    let isSwapped = false;
-    while (j > 0) {
-      if (arr[j] < arr[j - 1]) {
-        isSwapped = true;
-        [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
-      }
+    while (j > 0 && arr[j] < arr[j - 1]) {
+      [arr[j], arr[j - 1]] = [arr[j - 1], arr[j]];
       j--;
     }
   }
