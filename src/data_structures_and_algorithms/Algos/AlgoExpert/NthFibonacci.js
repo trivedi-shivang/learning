@@ -26,11 +26,13 @@ function nthFibonacci(n) {
   let firstNum = 0;
   let secondNum = 1;
   let nthFibonacci;
+  let fibonacciNums = [0, 1];
   while (i < n) {
     nthFibonacci = firstNum + secondNum;
     firstNum = secondNum;
     secondNum = nthFibonacci;
+    fibonacciNums.push(secondNum);
     i++;
   }
-  return nthFibonacci;
+  return fibonacciNums;
 }
