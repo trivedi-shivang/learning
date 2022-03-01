@@ -1,61 +1,42 @@
-class Node {
+class BST {
   constructor(value) {
     this.value = value;
-    this.right = null;
     this.left = null;
+    this.right = null;
   }
-}
-
-class BST {
-  constructor() {
-    this.root = null;
-  }
-
-  //   Avg O(log(n)) | O(1)
-  //   Worst O(n) | O(1)
-  insert(value) {
-    if (!this.root) {
-      this.root = new Node(value);
-      return this;
-    }
-    let currentNode = this.root;
-    while (true) {
-      if (currentNode.value > value) {
-        if (!currentNode.left) {
-          currentNode.left = new Node(value);
-          return this;
-        } else {
-          currentNode = currentNode.left;
-        }
+  insert(value, node = this) {
+    if (node.value > value) {
+      if (node.left) {
+        node = node.left;
+        this.insert(value, node);
       } else {
-        if (!currentNode.right) {
-          currentNode.right = new Node(value);
-          return this;
-        } else {
-          currentNode = currentNode.right;
-        }
+        node.left = new BST(value);
+        return;
+      }
+    } else {
+      if (node.right) {
+        node = node.right;
+        this.insert(value, node);
+      } else {
+        node.right = new BST(value);
+        return;
       }
     }
   }
 
-  //   Avg O(log(n)) | O(1)
-  //   Worst O(n) | O(1)
   contains(value) {
-    let currentNode = this.root;
+    let currentNode = this;
     while (currentNode) {
-      if (currentNode.value === value) return true;
-      else {
-        if (currentNode.value > value) {
-          currentNode = currentNode.left;
-        } else {
-          currentNode = currentNode.right;
-        }
+      if (currentNode.value === value) return "found";
+      if (currentNode.value > value) {
+        currentNode = currentNode.left;
+      } else {
+        currentNode = currentNode.right;
       }
     }
-    return false;
+    return "not found";
   }
 
-  // get the minimum value of the right subtree
   getMinValue(node) {
     while (node.left) {
       node = node.left;
@@ -63,12 +44,8 @@ class BST {
     return node.value;
   }
 
-  //   first find the node you want to remove
-  // second perform operations surrouding the node to be removed.
-  remove(value, currentNode, parentNode = null) {
-    currentNode = currentNode || this.root;
-    //   find the node to be removed
-    while (currentNode) {
+  remove(value, currentNode = this, parentNode = null) {
+    while (true) {
       if (currentNode.value > value) {
         parentNode = currentNode;
         currentNode = currentNode.left;
@@ -76,10 +53,13 @@ class BST {
         parentNode = currentNode;
         currentNode = currentNode.right;
       } else {
-        // node with two child nodes.
         if (currentNode.left && currentNode.right) {
           currentNode.value = this.getMinValue(currentNode.right);
           this.remove(currentNode.value, currentNode.right, currentNode);
+        } else if (parentNode.left === currentNode) {
+          parentNode.left = currentNode.left || currentNode.right;
+        } else if (parentNode.right === currentNode) {
+          parentNode.right = currentNode.left || currentNode.right;
         } else if (!parentNode) {
           if (currentNode.left) {
             currentNode.value = currentNode.left.value;
@@ -89,19 +69,9 @@ class BST {
             currentNode.value = currentNode.right.value;
             currentNode.left = currentNode.right.left;
             currentNode.right = currentNode.right.right;
-          }
-          // currentNode which does not have any children and does not have parentNode as well
-          else {
+          } else {
             currentNode.value = null;
           }
-        }
-        // parentNode has currentNode as either left or right child.
-        else if (parentNode.left === currentNode) {
-          parentNode.left = currentNode.left || currentNode.right;
-          return;
-        } else if (parentNode.right === currentNode) {
-          parentNode.right = currentNode.left || currentNode.right;
-          return;
         }
         break;
       }
@@ -109,89 +79,125 @@ class BST {
   }
 
   closest(value) {
-    let currentNode = this.root;
-    let closest = 0;
+    let currentNode = this;
+    let closest = Infinity;
     while (currentNode) {
-      if (!currentNode.left && !currentNode.right) return currentNode.value;
-      if (Math.abs(currentNode.value) < Math.abs(closest - value)) {
+      if (Math.abs(value - closest) > Math.abs(currentNode.value - value)) {
         closest = currentNode.value;
-        if (currentNode.right) {
-          currentNode = currentNode.right;
-        } else {
-          return closest;
-        }
+      }
+      if (currentNode.value > value) {
+        currentNode = currentNode.left;
+      } else if (currentNode.value < value) {
+        currentNode = currentNode.right;
       } else {
-        if (currentNode.left) {
-          currentNode = currentNode.left;
-        } else {
-          return closest;
-        }
+        return value;
       }
     }
+    return closest;
   }
 
-  // recursively
-  closest(tree, target) {
-    return this.findClosestValueInBSTHelper(tree, target, this.root.value);
+  // recursive solution
+  branchSums(arr, sum = 0, currentNode = this) {
+    this.calculateBranchSums(currentNode, sum, arr);
+    return arr;
   }
 
-  findClosestValueInBSTHelper(tree, target, closest) {
-    if (!tree) {
-      return closest;
+  calculateBranchSums(currentNode, sum, arr) {
+    sum += currentNode.value;
+    if (currentNode.left) {
+      this.calculateBranchSums(currentNode.left, sum, arr);
     }
-    if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
-      closest = tree.value;
+    if (currentNode.right) {
+      this.calculateBranchSums(currentNode.right, sum, arr);
     }
-    if (target < tree.value) {
-      tree = tree.left;
-      return this.findClosestValueInBSTHelper(tree, target, closest);
-    } else if (target > tree.value) {
-      tree = tree.right;
-      return this.findClosestValueInBSTHelper(tree, target, closest);
-    } else {
-      return closest;
+    if (!currentNode.left && !currentNode.right) {
+      arr.push(sum);
     }
   }
 
-  // branch sums
-  branchSums(tree) {
-    let result = [];
-    this.findBranchSumsInBSTHelper(tree, result);
-    return result;
+  // iterative solution
+  // start at root node. push it in a stack.
+  // pop in a while loop. compute new runningSum by combining oldrunningsum with node's value
+  // O(N) Time/Space
+  branchSums() {
+    let sums = [];
+    let runningSum = 0;
+    if (!this) return;
+    let nodesToExplore = [{ node: this, sum: runningSum }];
+    while (nodesToExplore.length) {
+      const { node, sum } = nodesToExplore.pop();
+      let newRunningSum = sum + node.value;
+      if (node.right) {
+        nodesToExplore.push({ node: node.right, sum: newRunningSum });
+      }
+      if (node.left) {
+        nodesToExplore.push({ node: node.left, sum: newRunningSum });
+      }
+      if (!node.left && !node.right) {
+        sums.push(newRunningSum);
+      }
+    }
+    return sums;
   }
 
-  findBranchSumsInBSTHelper(tree, result, sum = 0) {
-    if (!tree) return;
-    if (!tree.left && !tree.right) {
-      result.push(sum + tree.value);
-      return;
-    } else {
-      sum += tree.value;
-      // if (tree.left) {
-      // tree = tree.left;
-      sum + this.findBranchSumsInBSTHelper(tree.left, result, sum);
-      // }
-      // if (tree.right) {
-      // tree = tree.right;
-      sum + this.findBranchSumsInBSTHelper(tree.right, result, sum);
-      // }
+  // recursive
+  nodeDepthsSum() {
+    return this.calculateNodeDepthsSum();
+  }
+
+  // recursive
+  // calculateNodeDepthsSum(currentNode = this, sum=0, depth=0){
+  //     if(!currentNode) return;
+  //     sum += depth;
+  //     if(currentNode.left){
+  //         sum = this.calculateNodeDepthsSum(currentNode.left, sum, depth+1);
+  //     }
+  //     if(currentNode.right){
+  //         sum = this.calculateNodeDepthsSum(currentNode.right, sum, depth+1);
+  //     }
+  //     if(!currentNode.left && !currentNode.right){
+  //         return;
+  //     }
+  //     return sum;
+  // }
+
+  // iterative
+  // calculateNodeDepthsSum(){
+  //     let nodesToExplore = [{node: this, depth: 0}];
+  //     let sum = 0;
+  //     while(nodesToExplore.length){
+  //         let {node, depth} = nodesToExplore.pop();
+  //         sum += depth;
+  //         if(node.left){
+  //             nodesToExplore.push({node: node.left, depth: depth+1});
+  //         }if(node.right){
+  //             nodesToExplore.push({node: node.right, depth: depth+1});
+  //         }
+  //     }
+  //     return sum;
+  // }
+
+  // recursively but combining both left and right depths using the following formula
+  // O(N) where N is total number of nodes | O(h) height of the BST or maximum depth. If BST is linear, O(n) will be space
+  calculateNodeDepthsSum(currentNode = this, depth = 0) {
+    let sum = depth;
+    if (currentNode.left) {
+      sum += this.calculateNodeDepthsSum(currentNode.left, depth + 1);
     }
+    if (currentNode.right) {
+      sum += this.calculateNodeDepthsSum(currentNode.right, depth + 1);
+    }
+    return sum;
   }
 }
 
-let b = new BST();
-b.insert(10);
-b.insert(6);
-b.insert(5);
-b.insert(1);
-b.insert(7);
-b.insert(15);
-b.insert(12);
-b.insert(11);
-b.insert(16);
-// console.log(b.contains(5));
-b.remove(10);
-// console.log(b.closest(12));
-console.log(b.closest(b.root, 12));
-console.log(b.branchSums(b.root));
-// console.log(b);
+let bst = new BST(10);
+bst.insert(5);
+bst.insert(2);
+bst.insert(1);
+bst.insert(5);
+bst.insert(15);
+bst.insert(13);
+bst.insert(14);
+bst.insert(22);
+console.log(bst.calculateNodeDepthsSum());
