@@ -22,7 +22,7 @@
 //   return true;
 // }
 
-// checking for monotonicity for every pair
+// checking for monotonicity for every pair (instead of deciding it beforehand and checking whether successive elements follow that monotonicity type)
 function isMonotonicArray(arr) {
   let i = 0;
   let j = 1;

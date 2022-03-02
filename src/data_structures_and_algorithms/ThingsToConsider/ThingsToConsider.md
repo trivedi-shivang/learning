@@ -23,3 +23,8 @@
 ## Always walk through sample input/output. If not provided, generate and verify with interviewwer regarding its validity. Look for patterns, intuition.
 
 ## Greedy algorithm normally requires sorting arrays.
+
+## Sliding Window Technique
+
+1. If given arr/string and if the question requires you to find solution using subarray/substring. then try using sliding-window technique.
+2. If a window-size is given, apply fixed sliding-window technique otherwise if window size is not given and if some conditions are given for that window to be fulfilled than apply variable sliding-window technique.
