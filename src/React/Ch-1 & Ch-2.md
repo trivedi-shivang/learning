@@ -315,3 +315,26 @@ freel.print();
 
 It is a module pattern supported by all versions of Node.
 It exports module using `module.exports` and imported using `require`.
+
+## Promise
+
+A JS promise object contains both the producing code and calls to the consuming code.
+
+```javascript
+let myPromise = new Promise(function (myResolve, myReject) {
+  let x = 0;
+  // when successfull
+  if (x === 1) myResolve(x);
+  // else when rejected
+  if (typeof x === "number") myReject(x);
+});
+
+myPromise.then(
+  function (result) {
+    console.log(result);
+  },
+  function (error) {
+    console.error(error);
+  }
+);
+```

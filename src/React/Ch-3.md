@@ -93,3 +93,13 @@ const selfEducate = (person) => ({
 - The function should take in at least one argument.
 - The function should return a value or another function.
 - The function should not change or mutate any of its arguments.
+
+## Higher Order Functions
+
+- The first category is that they accept other functions as arguments. For Ex: Array.map, Array.filter or Array.reduce.
+
+* The other category involves function returning other functions.
+
+## Currying Functions
+
+A function which hangs on to some information and returns a function that can be used and reused when the rest of the information is made available.
