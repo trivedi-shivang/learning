@@ -90,6 +90,6 @@ const selfEducate = (person) => ({
 
 **Try to follow three steps when creating function**
 
-. The function should take in at least one argument.
-. The function should return a value or another function.
-. The function should not change or mutate any of its arguments.
+- The function should take in at least one argument.
+- The function should return a value or another function.
+- The function should not change or mutate any of its arguments.
