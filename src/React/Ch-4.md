@@ -164,6 +164,131 @@ It is a module bundler. It takes all kinds of files (JS, LESS, CSS, JSX, ESNext 
 
 State is the other half. The state of a React application is driven by data that has the ability to change. Hooks is a React feauture. It has reusable code logic which can be hooked up with components. There are several built-in hooks and one create hooks on top of that.
 
-Hooks function can cause the component they are hooked into to rerender.
+Hooks function can cause the component they are hooked into to rerender. Hooks are designed to be used in React components.
 
 Maintaining State in each component is difficult. Thus, it is easy to maintain it at root level and it will pass the colors down to child components to handle the rendering.
+
+A pure component is a function component that does not contain state and will render the same user interface given the same props.
+
+## Controlled and Uncontrolled Components
+
+### Uncontrolled Components
+
+React Ref allows to access DOM node directly. A Ref is an object that stores values for the lifetime of a component.
+
+```javascript
+const txtTitle = useRef(); //creates a ref
+//<input ref={txtTitle} /> // setting the value for the txtTitle ref by adding the ref attribute to input elements
+```
+
+After setting the value for the txtTitle ref, it creates `current` field on ref object (`txtTitle.current`).
+One can reset the ref's current-value by assigning a different value. For Ex:
+`txtTitle.current.value = ''`
+This makes a component an uncontrolled component because it uses DOM (non React code) to save the form values.
+
+```javascript
+import { useRef } from "react";
+export default function AddColorForm({ onNewColor = (f) => f }) {
+  const txtTitle = useRef();
+  const hexColor = useRef();
+  const submit = (e) => {
+    e.preventDefault();
+    const title = txtTitle.current.value;
+    const color = hexColor.current.value;
+    onNewColor(title, color);
+    txtTitle.current.value = "";
+    hexColor.current.value = "";
+  };
+  return (
+    <form onSubmit={submit}>
+      <input ref={txtTitle} type="text" placeholder="color title..." required />
+      <input ref={hexColor} type="color" required />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
+### Controlled Component
+
+In a controlled component, the form values are managed by React and not the DOM.
+It’s worth pointing out that controlled form components are rerendered, a lot. Think about it: every new character typed in the title field causes the AddColorForm to rerender. Using the color wheel in the color picker causes this component to rerender way more than the title field because the color value repeatedly changes as the user drags the mouse around the color wheel.
+
+```javascript
+import { useState } from "react";
+export default function AddColorForm({ onNewColor = (f) => f }) {
+  const [title, setTitle] = useState("");
+  const [color, setColor] = useState("#000000");
+  const submit = (e) => {
+    e.preventDefault();
+    onNewColor(title, color);
+    setTitle("");
+    setColor("");
+  };
+  return (
+    <form onSubmit={submit}>
+      <input
+        value={title}
+        type="text"
+        placeholder="color title..."
+        onChange={(e) => setTitle(e.target.value)}
+        required
+      />
+      <input
+        value={color}
+        onChange={(e) => setColor(e.target.value)}
+        type="color"
+        required
+      />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
+<!-- React Controlled Component with Custom Hook. Any change in custom hooks rerenders AddColorForm -->
+
+```javascript
+// ./hooks/useInput.js
+import { useState } from "react";
+export const useInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+  return [
+    { value, onChange: (e) => setValue(e.target.value) },
+    () => setValue(initialValue),
+  ];
+};
+
+// ./components/AddColorForm.js
+import { useState, useTitle } from "react";
+export default function AddColorForm({ onNewColor = (f) => f }) {
+  const [titleProps, resetTitle] = useTitle("");
+  const [colorProps, resetColor] = useTitle("#000000");
+  const submit = (e) => {
+    e.preventDefault();
+    onNewColor(titleProps.value, colorProps.value);
+    resetTitle();
+    resetColor();
+  };
+  return (
+    <form onSubmit={submit}>
+      <input
+        {...titleProps}
+        type="text"
+        placeholder="color title..."
+        required
+      />
+      <input {...colorProps} type="color" required />
+      <button>Add</button>
+    </form>
+  );
+}
+```
+
+## Context
+
+In React, context is like jet-setting for your data. You can place data in React context by creating a context provider. A context provider is a React component you can wrap around your entire component tree or specific sections of your component tree. The context provider is the departing airport where your data boards the plane. It’s also the airline hub. All flights depart from that airport to different destinations. Each destination is a context consumer. The context consumer is the React component that retrieves the data from context. This is the destination airport where your data lands, deplanes, and goes to work.
+
+In order to use context in React, we must first place some data in a context provider and add that provider to our component tree.
+Context can be used by creating an instance of the same as follows:
+`export const ColorContext = createContext();`
