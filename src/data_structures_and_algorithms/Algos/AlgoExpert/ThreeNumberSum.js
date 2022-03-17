@@ -19,10 +19,11 @@ function threeNumberSum(arr, target) {
   return -1;
 }
 
+// returns multiple combinations
 // O(Nlog(N)) + O(N^2) = O(N^2) Time (O(N) for iterating currentNumberIdx and O(N) for inner while loop which iterates through n-1 elements)
 // O(N) space since there is a posibility that there could be many combinations and it might all the array elements.
 function threeNumberSum(arr, target) {
-  // this is important and has to happen in order to successfully work.
+  // sorting is important and has to happen in order to successfully work.
   arr.sort((a, b) => a - b);
   let currentNumberIdx = 0;
   let leftIdx = currentNumberIdx + 1;
@@ -32,14 +33,14 @@ function threeNumberSum(arr, target) {
     while (leftIdx < rightIdx) {
       if (arr[currentNumberIdx] + arr[leftIdx] + arr[rightIdx] === target) {
         results.push([arr[currentNumberIdx], arr[leftIdx], arr[rightIdx]]);
-        // if we only increment leftIdx, for sure we will get total of those numbers to be greater than target. Similarly, decrementing only rightIdx will give total less than target. Hence changing both gives us a possibility that we might get total equal to target.
+        // if we only increment leftIdx, for sure we will get total of those numbers to be greater than target. Similarly, only decrementing only rightIdx will give total less than target. Hence changing both gives us a possibility that we might get total equal to target.
         leftIdx++;
-        // rightIdx--;
+        rightIdx--;
       } else if (
         arr[currentNumberIdx] + arr[leftIdx] + arr[rightIdx] <
         target
       ) {
-        leftIdx += 1;
+        leftIdx++;
       } else {
         rightIdx--;
       }
