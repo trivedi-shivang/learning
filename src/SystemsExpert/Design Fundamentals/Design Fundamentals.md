@@ -43,3 +43,9 @@ It is a special request that goes to predetermined set of servers to find out IP
 It is a unique identifier of a machine. All computers connected to the internet have ip addresses. An IP address is like a unique mailbox given to each ip address.
 
 Once the browser gets IP address from DNS Server, it sends HTTP request to the server. An HTTP request sends bytes (packed into packets) to the server. One of the things which which the request contains is Source IP address so that the server knows to which machine it needs to send the data to.
+
+When client speaks with server using HTTP protocol, it uses port 80. When it speakings using HTTPS, it uses port 443.
+
+### Network Protocols
+
+Rules with which two machines interact with one another. Some of the protocols which are mostly discussed are IP, TCP and HTTP.
