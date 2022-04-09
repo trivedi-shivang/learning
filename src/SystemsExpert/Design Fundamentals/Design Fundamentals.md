@@ -49,3 +49,10 @@ When client speaks with server using HTTP protocol, it uses port 80. When it spe
 ### Network Protocols
 
 Rules with which two machines interact with one another. Some of the protocols which are mostly discussed are IP, TCP and HTTP.
+When a machine sends data to another machines, it sends in IP Packets. The packet has two sections: IP Header and Data. All information is stored in bytes.Header contains IP addresses of source and destination machines, size of IP packet and which IP protocol (IPV4 ot IPV6) is used. One IP Packet may not be enough since the data section can only hold 2^16 bytes. This is where TCP Protocol come into picture.
+
+TCP is built on top of IP Protocol and it's information is send in Header section of each IP packet. TCP protocol will make sure all IP packets are sent in uncorruptable way (error free way). TCP protocol acts like a connector for all IP addresses.
+
+When a browser connects with a destination machine, TCP creates a handshake between host and destination machines.
+
+HTTP is built on top of TCP (abstraction of TCP protocol). HTTP helps to add business logic, whereas IP and TCP are just meant for data transportation.
