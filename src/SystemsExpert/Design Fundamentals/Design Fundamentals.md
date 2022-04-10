@@ -158,3 +158,82 @@ We can program such that each client in the circle queries the first server in c
 ## Rendevuos Hashing
 
 Find which server has highest value based on a hashing function for a user/client and use that to serve that client. In an event when a server crashes, highest value is calculated again. This has same benefits as consistent caching.
+
+## Relational Databases
+
+Majorly every database is either relational or non-relational. Relational database have information in tabular format for an entity. Each tabular-row is also called as a record and column will be entity attributes. Database schema will define what kind of data will be stored. Most relational databases support SQL
+
+SQL database has ACID transaction.
+
+- A for Atomicity means a transaction consist of multiple sub operations. For Ex: If a database is responsible for transferring funds between two bank accounts, it can be done into two steps: 1) Decreasing funds from an account and 2) Increasing funds in another account. SQL database guarantees that either both or none operations are successful.
+- Consistency refers to non-staleness of the data. This means any future transaction will happen on the data which was updated after previous transaction was complete.
+- Isolation: Multiple transactions can happen at the same time but the database will process those transactions sequentially. For Ex: If two separate transactions are initiated on a table. Until the first transaction is completed, the second transaction will be in "pause" state. This also means the user who is performing the second transaction won't see the changes of the first transaction until that has been commited.
+- Durability: Ensures that data updates are permanent.
+
+Database Indexes is an auxilary data-structure that optimize fast-searching for a column in a table. Basically, it creates a table to store column-values in a specified order with a reference to the records. For Ex:
+
+| id  | customer_name | processed_at | amount |
+| --- | ------------- | ------------ | ------ |
+| 1   | John          | 2020-01-12   | 1,200  |
+| 2   | Larry         | 2020-02-23   | 1,456  |
+
+If index is created on `amount` column, it will create a new table to store that column's values along with where those column values are referenced in the above table.
+
+| id  | amount |
+| --- | ------ |
+| 1   | 1,200  |
+| 2   | 1,456  |
+
+**When choosing between SQL vs No-SQL database, one thing to keep in mind is that SQL provides powerful querying capabilities and will be ACID compliant**
+
+## Key-Value Stores
+
+It is a type of database which will store key-value pairs. It is similar to JS object. This is used when you don't want to store information in tabular complicated structure. This kind of database is used for caching. It is also used to store dynamic system information (for Ex: if the system is on or off. if it is stored in the database, it can be referred by other services directly from the store). Ex of key-value stores are DynamoDB, Redis...etc
+
+The difference between server-cache and Redis(In-memory cache database) is that if the server cache, we will miss the data, but the redis database will still persist the data (until the data in it expires or if that crashes)
+
+## Specialized Storage Paradigms
+
+There are different types of storage paradigms:
+
+- Blob Store: Binary Large Object. Basically it is arbitrary piece of non-structured data. For Ex: Binary, Video, audio files....etc. They are being provided as services from cloud-platforms like GCS (Google Cloud Storage) or S3 (by Amazon). Those services help to read/write blob data. Blob stores are different from the key-value stores since the latter is not efficient for storing massive amounts of blob-data.
+
+- Time Series DB: For storing time-series data.Manipulations around time-series make this type of database useful. For Ex: Monitoring data on a website, stock-prices data. Some popular services are InfluxDB, Prometheus...etc
+
+- Graph DB: These kind of database helps to avoid querying structured data by joining on multiple related tables. These is applied for social networks like Facebook, Twitter, Instagram, LinkedIn.... Some popular service is Neo4j etc
+
+- Spatial DB: Database optimized for storing spatial data (geometric data). For Ex: findings best cheaper hotels in a city...etc. Similar to SQL indexes, one can have `Quad-Tree` indexes for spatial-data.
+
+## Replication and Sharding.
+
+Consider a server with a database. What if the database goes down? At that point reading/writing to/from the database won't be possible. In order to prevent that, one can have a standby database(Database B) which will be replica of the main-database(Database A). This replica db will take over when Database-A fails until Database A is repaired.
+
+Replication can happen asynchronously or synchronously. Synchronous replication involves updating all db's at once while async updates happen at certain time interval after which all replica databases have same infromation as the main database.
+
+### Sharding
+
+Sometimes massive data is expensive to store and read/write to/from it. To avoid this we can split the data across multiple databases. This spliting is called as sharding. Each split is referred to as a shard or data-partition. Various sharding strategies allow us to split the data effectively without under/over utilizing a database server. The best sharding-strategy is to use a hashing function which provides uniformity.
+
+One of the sharding-strategy is to shard data by using hashing function to determine which part of data will be stored to which database. With consistent hashing technique, it would be easy to implement database systems such that each of them won't be under/over utilized. But, if one of the db fails, the users associated with that region would loose all their data.
+
+Thus, it would be better to not implement sharding using consistent hashing. A better way is to replicas of each shard in case a shard goes down.
+
+Logic to dictate what shard to read from/write to can be in server but what if the server fails. A better solution is to have a reverse proxy where server is the client which would make request to reverse-proxy machine and than that machine will determine which shard to request from/to from shards.
+
+## Leader Election:
+
+Imagine a third-party payment system (Like Paypal, Stripe...etc) is responsible for charging/debiting customers. There is a also a database which will store user information for a subscription service like Netflix. How to let third-party system know what and when to charge? It might be possible to connect the database with the third-party service but that would expose critical information to the system.
+
+A better way would be to have a server that sits between the system and the db and that server will periodically check which user to be charged and how much from the database and that server would send that information to third-party system about it. What if that server fails? One can horizontally scale by adding more servers. Now with so many servers, how can you make sure that each server won't charge a customer multiple times. This is where the Leader election will come into picture.
+
+Leader election select one server as a leader to perform business operations while others remian in standby. Should anything happens to the leader server, than other servers would select a new leader and that new leader would continue performing business operations. What if one of those servers fail ? In that scenario all servers won't consent for a server to be leader. Thus, to avoid leader election amongst servers, one can implement using technologies like Zookeeper or Etcd. Etcd, use consensus algorithm, is highly available (around 99.999%) and highly consistent (meaning anytime anything is queried will give the same result)
+
+## Peer-To-Peer Networks
+
+Let's say you have a server which needs to transfer 5GB of file from it to 1000 machines. For Ex: security video footage to be transferred every 15 mins to multiple machines. How would you do that? A simple strategy is to transfer a file at a time to a machine. This would be take so much time (imagining 1 file is 5GB and it takes 1 second to transfer data to a machine. Thus, it would take 17 mins approx to transfer the file to all machines).
+
+Another approach is to copy the file across multiple servers and the all of them can distribute machines to send the file. This would significantly reduce time to transfer file by 10 but still it would not be sufficient. Another strategy is to shard the data on multiple servers. But in that strategy a server has to still serve to all machines until it is transferred to all of them.
+
+This is best achieved using Peer-to-Peer networks. all machines are referred to as peers. Each peer would receive a part of the file (by splitting the file in parts and sending each part to all peers at once). After all machines receiving a part of the file, each of them can either communicate via a central database which would orchastrate peer-to-peer transfer or peers can talk to themselves like gossiping with each other to communicate and transfer rest of the file.
+
+This is an example of what Torrenting uses.
