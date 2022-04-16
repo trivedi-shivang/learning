@@ -13,10 +13,11 @@ function validateBSTHelper(tree, minValue, maxValue) {
 }
 
 class BST {
-  constructor(value) {
+  constructor(value, left = null, right = null, parent = null) {
     this.value = value;
-    this.right = null;
-    this.left = null;
+    this.left = left;
+    this.right = right;
+    this.parent = parent;
   }
 
   // add insertion, deletion and searching functions for BST (Binary Search Tree)
@@ -29,6 +30,7 @@ class BST {
       if (value < currentNode.value) {
         if (!currentNode.left) {
           currentNode.left = new BST(value);
+          currentNode.left.parent = currentNode;
           break;
         } else {
           currentNode = currentNode.left;
@@ -36,6 +38,7 @@ class BST {
       } else {
         if (!currentNode.right) {
           currentNode.right = new BST(value);
+          currentNode.right.parent = currentNode;
           break;
         } else {
           currentNode = currentNode.right;
@@ -245,16 +248,16 @@ class BST {
   preOrderTraversal(array = [], tree = this) {
     if (!tree) return;
     array.push(tree.value);
-    this.inOrderTraversal(array, tree.left);
-    this.inOrderTraversal(array, tree.right);
+    this.preOrderTraversal(array, tree.left);
+    this.preOrderTraversal(array, tree.right);
     return array;
   }
 
   // PostOrder: left node then right node then current-node
   postOrderTraversal(array = [], tree = this) {
     if (!tree) return;
-    this.inOrderTraversal(array, tree.left);
-    this.inOrderTraversal(array, tree.right);
+    this.postOrderTraversal(array, tree.left);
+    this.postOrderTraversal(array, tree.right);
     array.push(tree.value);
     return array;
   }
@@ -321,6 +324,170 @@ class BST {
     bst.right = this.constructMinHeightBST(array, midIdx + 1, endIdx);
     return bst;
   }
+
+  //   given a BST, find the kth largest value (k<= N where N is the number of nodes of BST). for k=1, find the largest node in BST, for k=2, find the second-largetst value and so on....
+  //   brute force approach find in-order traversal(left, value, right) and then return kth largest value
+  // o(N) for in-order traversal | O(N) to store in-order traversal value.
+  findKthLargestValueInBst(k, tree = this) {
+    let sortedNodeValues = [];
+    this.inOrderTraversal(sortedNodeValues, tree);
+    return sortedNodeValues[sortedNodeValues.length - k];
+  }
+
+  //   suppose to be for the function above but a similar function declaration already exists.
+  //   inOrderTraversal(sortedNodeValues, node) {
+  //     if (!node) return;
+  //     this.inOrderTraversal(sortedNodeValues, node.left);
+  //     sortedNodeValues.push(node.value);
+  //     this.inOrderTraversal(sortedNodeValues, node.right);
+  //   }
+
+  //   find the right most value in BST (that will be the largest value). Then search k nodes from it
+  treeInfo = {
+    numberOfNodesVisited: 0,
+    latestVisitedValue: -1,
+    rootIdx: 0,
+    diameter: 0,
+    height: 0,
+  };
+
+  //   O(k+h) (visiting right-most value which could be in longest branch. Thus 'h' for that. once at the rightmost value, then visiting k nodes to find kth node's value. ) | O(h) atmost h function calls in call-stack.
+  findKthLargestValueInBst(k, tree = this) {
+    reverseInOrderTraverse(tree, k, treeInfo);
+    return this.treeInfo.latestVisitedValue;
+  }
+
+  reverseInOrderTraverse(tree, k, treeInfo) {
+    if (!node || treeInfo.numberOfNodesVisited >= k) return;
+    this.reverseInOrderTraverse(tree.right, k, treeInfo);
+    if (treeInfo.numberOfNodesVisited < k) {
+      treeInfo.numberOfNodesVisited += 1;
+      treeInfo.latestVisitedValue = node.value;
+      this.reverseInOrderTraverse(tree.left, k, treeInfo);
+    }
+  }
+
+  //   given an array containing pre-order traversal values of a BST, construct a unique BST from them. if the pre-order traversal of a BT is given instead of BST then there are multiple BST which can be created from them.
+  //   one approach is following:
+  // O(N^2) for every n nodes in pre-order traversal array, we are iterating through that array to find rightsubtreeidx (maximum n traversals) | O(h) for function-calls and O(N) for constructing BST
+  reconstructBst(preOrderTraversalValues) {
+    if (preOrderTraversalValues.length === 0) return null;
+    let currentValue = preOrderTraversalValues[0];
+    let rightSubTreeRootIdx = preOrderTraversalValues.length; //if rightsubtree does not exist then we can confirm that all elements after the root-element will be part of left-subtree
+    for (let i = 1; i < preOrderTraversalValues.length; i++) {
+      //used to be i=0 but that would inaccurate results for the "if" condition beneath since it will always consider all elements after root-node to be in right subtree and not possibility of having them in left subtree.
+      let value = preOrderTraversalValues[i];
+      if (value >= currentValue) {
+        // used to be value>currentValue (true for distinct integers). But for duplicate values, we need '>=' because that will allow values greater than equal to the rootnode to be in the right subtree of the root node.
+        // we found the right-child
+        rightSubTreeRootIdx = i;
+        break;
+      }
+    }
+    let leftSubTree = this.reconstructBst(
+      preOrderTraversalValues.slice(1, rightSubTreeRootIdx)
+    ); // "1" because we left-subtree will have values after root node's value "0" and before rightSubtreeIdx
+    let rightSubTree = this.reconstructBst(
+      preOrderTraversalValues.slice(rightSubTreeRootIdx)
+    );
+    return new BST(currentValue, leftSubTree, rightSubTree);
+  }
+
+  //   O(N) time iterating through all nodes | O(h) call-stack function-calls + O(N) to create the BST output.
+  reconstructBst(preOrderTraversalValues) {
+    return reconstructBstFromRange(
+      -Infinity,
+      Infinity,
+      preOrderTraversalValues,
+      treeInfo
+    );
+  }
+
+  reconstructBstFromRange(
+    lowerBound,
+    upperBound,
+    preOrderTraversalValues,
+    currentSubTreeInfo
+  ) {
+    if (currentSubTreeInfo.rootIdx === preOrderTraversalValues.length)
+      return null;
+    let rootValue = preOrderTraversalValues[currentSubTreeInfo.rootIdx];
+    if (rootValue < lowerBound || rootValue >= upperBound) return null; // used to be rootValue<= lowerBound (true for distinct integers). But for duplicate values, we need '<' becausethat will allow values greater than equal to the rootnode to be in the right subtree of the root node.
+    currentSubTreeInfo.rootIdx += 1;
+    let leftSubTree = this.reconstructBstFromRange(
+      lowerBound,
+      rootValue,
+      preOrderTraversalValues,
+      treeInfo
+    );
+    let rightSubTree = this.reconstructBstFromRange(
+      rootValue,
+      upperBound,
+      preOrderTraversalValues,
+      treeInfo
+    );
+    return new BST(rootValue, leftSubTree, rightSubTree);
+  }
+
+  // given a BT, return inverted BT.
+  // O(N) since we are travelling through all nodes | O(N) will have all leaf nodes in the queue. leaf nodes are approximately N/2
+  invertBinaryTree(tree = this) {
+    let queue = [tree];
+    while (queue.length) {
+      let current = queue.shift();
+      if (!current) {
+        continue;
+      }
+      [current.left, current.right] = [current.right, current.left];
+      queue.push(current.left);
+      queue.push(current.right);
+    }
+  }
+
+  // another implementation using recursive approach
+  // O(N) since we are travelling all tree-nodes | O(h) atmost will have h function calls where h is height (longest branch of the BT) (which is roughly N/2 for balanced Binary tree)
+  invertBinaryTree(tree = this) {
+    if (!tree) return; //base-case don't do anything
+    [tree.left, tree.right] = [tree.right, tree.left];
+    this.invertBinaryTree(tree.left);
+    this.invertBinaryTree(tree.right);
+  }
+
+  // given a BT, find its diameter. A diameter of BT is the length of the longest path in the tree. Longest means starting at one node and ending at another nodes. Length is measured by edges.
+  // depth first traversal will help us here.
+  binaryTreeDiameter(tree = this) {
+    return this.getTreeInfo(tree).diameter;
+  }
+
+  getTreeInfo(tree) {
+    if (!tree) return { diameter: 0, height: 0 };
+    let leftTreeData = this.getTreeInfo(tree.left);
+    let rightTreeData = this.getTreeInfo(tree.right);
+
+    let longestPathThroughRoot = leftTreeData.height + rightTreeData.height; //distance between leaf nodes via root
+    let maxDiameterSoFar = Math.max(
+      leftTreeData.diameter,
+      rightTreeData.diameter
+    );
+    let currentDiameter = Math.max(longestPathThroughRoot, maxDiameterSoFar); //currentDiameter is w.r.t root-node.
+    let currentHeight = 1 + Math.max(leftTreeData.height, rightTreeData.height); //currentHeight is w.r.t to root-node
+    return { diameter: currentDiameter, height: currentHeight };
+  }
+
+  // given a BT and a node, find its successor. A successor of a node which is traversed after the given node in in-order fashion. the given node is already present in the tree.
+  findSucessor(node, tree = this) {
+    let inOrderTraversalOrder = [];
+    this.inOrderTraversal(inOrderTraversalOrder);
+    for (let i = 0; i < inOrderTraversalOrder.length; i++) {
+      let currentNode = inOrderTraversalOrder[i];
+      if (currentNode != node) continue;
+      if (i === inOrderTraversalOrder.length - 1) return null; //found the given node is the last node in in-order traversal. hence return null.
+      return inOrderTraversalOrder[i] + 1;
+    }
+  }
+
+  // for other implementation, look at FindBinaryTreeSuccessor.js
+  findSucessor(node, tree = this) {}
 }
 
 let bst = new BST(10);
@@ -338,4 +505,9 @@ bst.insert(12);
 // console.log(bst.preOrderTraversal(array));
 // array = [];
 // console.log(bst.postOrderTraversal(array));
-console.log(bst.minHeightBST([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+// console.log(bst.minHeightBST([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+// console.log(bst.findKthLargestValueInBst(3));
+// console.log(bst.reconstructBst([10, 5, 2, 1, 5, 15, 13, 12, 14, 22]));
+// console.log(bst.invertBinaryTree());
+// console.log(bst.binaryTreeDiameter());
+// console.log(bst.findSucessor({ value: 14, left: null, right: null }));

@@ -7,6 +7,7 @@ function numberOfWaysToMakeChange(target, denominations) {
     for (let i = 1; i <= target + 1; i++) {
       let amount = i;
       if (denom <= amount) {
+        //because there is no way you can select a denom to make the amount if denom>amount
         ways[amount] += ways[amount - denom];
       }
     }

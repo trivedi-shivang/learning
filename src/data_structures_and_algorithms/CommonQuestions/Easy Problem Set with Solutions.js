@@ -881,52 +881,10 @@ function mergeOverlappingIntervals(intervals) {
   return mergedIntervals;
 }
 
-class Node {
-  constructor(name) {
-    this.name = name;
-    this.children = [];
-  }
-
-  addChild(name) {
-    if (typeof name === "object") {
-      this.children.push(name);
-    } else {
-      this.children.push(new Node(name));
-    }
-  }
-
-  // O(V+E) V- Vertices and E-Edges (we are visiting every vertice and for every vertice we are running the function on its children) | O(V) (number of frames on call-stack) or O(V) to store vertices in the "array".
-  depthFirstSearch(array) {
-    array.push(this.name);
-    for (let child of this.children) {
-      child.depthFirstSearch(array);
-    }
-    return array;
-  }
-}
-
 // let depthFirstNodes = [];
 // bst.depthFirstSearch(depthFirstNodes)
 // console.log(depthFirstNodes);
 
-// let f = new Node('F');
-// f.addChild('I');
-// f.addChild('J');
-// let b = new Node('B');
-// b.addChild('E');
-// b.addChild(f);
-// let c = new Node('C');
-// let g = new Node('G');
-// g.addChild('K');
-// let d = new Node('D');
-// d.addChild(g);
-// d.addChild('H');
-// let a = new Node('A');
-// a.addChild(b);
-// a.addChild(c);
-// a.addChild(d);
-// let array = [];
-// console.log(a.depthFirstSearch(array));
 // console.log(smallestDifference([-1,5,10,20,28,3], [26, 134, 135, 15, 17]));
 // console.log(moveElementToEnd([2,2,2,2,2,1,4,2,3], 2));
 // console.log(isMonotonic([1,2,3,43,2,1]));
