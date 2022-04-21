@@ -379,6 +379,7 @@ minimumNumberOfCoins([1, 2, 3], 5);
 // Given two strings: S1= [a,b,c,d,g,h], S2 = [a,b,e,d,f,h,r]. Find longest common subsequence(not substring). subsequence, unlike substring, does not need to pick all array elements seuqentially.
 function longestCommonSubsequenceLength(str1, str2) {
   if (str1.length === 0 || str2.length === 0) {
+    //base condition
     return 0;
   }
   if (str1[str1.length - 1] === str2[str2.length - 1]) {
@@ -390,12 +391,11 @@ function longestCommonSubsequenceLength(str1, str2) {
         str2.slice(0, str2.length - 1)
       )
     ); //why 1+? because we know last character is common in both strings.
-  } else {
-    return Math.max(
-      longestCommonSubsequenceLength(str1, str2.slice(0, str2.length - 1)),
-      longestCommonSubsequenceLength(str1.slice(0, str1.length - 1), str2)
-    );
   }
+  return Math.max(
+    longestCommonSubsequenceLength(str1, str2.slice(0, str2.length - 1)),
+    longestCommonSubsequenceLength(str1.slice(0, str1.length - 1), str2)
+  );
 }
 
 function longestCommonSubsequenceLength(str1, str2) {
@@ -516,4 +516,35 @@ function longestCommonSubsequence(str1, str2) {
 
 longestCommonSubsequence("abcd", "abc");
 
-//given two strings, find shortest common subsequence which will contains all characters from both strings sequentially.
+//given two strings, find shortest common supersequence. A supersequence is a string which consist of all characters of both strings sequentially (not necessarily in continuos fashion)
+function shortestSupersequenceLength(str1, str2) {
+  return str1.length + str2.length - longestCommonSubsequenceLength(str1, str2); //why longestCommon....() because the function will fetch length of subsequence. Subtracting that length from length of both strings will keep common characters from both strings once in the final supersequencelength
+}
+
+shortestSupersequenceLength("ABC", "A");
+
+// minimum number of insertion or deletion to convert a string A from string B.
+// if two arrays and a capacity or if an array and a capacity is given then it is 0/1 or unbounded knapsack problem
+
+// if two strings are given, and if question is asked about LCS and if the output is asked in the form of string.
+function numberOfOperations(str1, str2) {
+  // longest common subsequence (LCS) is common between str1 and str2. They are not removed from any string (str1 or str2) to convert to other string (str2 or str1 respectively). Thus, two steps are happening. First str1 is converted to LCS by deleting characters and then LCS is converted to str2 by adding characters.
+  let toLCSOperations =
+    str1.length - longestCommonSubsequenceLength(str1, str2);
+  let toStr2Operations =
+    str2.length - longestCommonSubsequenceLength(str1, str2);
+  return toLCSOperations + toStr2Operations;
+}
+
+// longest palindromic subsequence
+// Given a string, return longest palindromic subsequence
+function longestPalindromicSubsequenceLength(str1) {
+  // since two strings are not given, LCS can be applied by reversing the given string and considering that reversed string as str2. If we find length of LCS of str1 and str2, that will be longest palindromic subsequence length
+  let str2 = str1.split("").reverse().join("");
+  return longestCommonSubsequenceLength(str1, str2);
+}
+
+// minimum number of deletion in a string to make it a palindrome
+function minimumDeletionsToConvertStringToPalindrome(str1) {
+  return str1.length - longestPalindromicSubsequenceLength(str1);
+}

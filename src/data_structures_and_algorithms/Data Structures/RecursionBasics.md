@@ -169,3 +169,148 @@ function kGrammer(n, k) {
 }
 kGrammer(2, 2);
 ```
+
+Given a string, find its subsets (or powerset or subsequence)
+
+```javascript
+function subsets(str, output) {
+  if (str.length === 0) {
+    // this is base condition. This is a leaf node.
+    console.log(output);
+    return;
+  }
+  subsets(str.slice(1), output);
+  subsets(str.slice(1), output + str[0]);
+}
+let output = "";
+subsets("ab", output);
+
+let map = {};
+function uniqueSubsets(str, output) {
+  if (str.length === 0) {
+    if (output in map) return;
+    map[output] = true;
+    console.log(output);
+    return;
+  }
+  uniqueSubsets(str.slice(1), output);
+  uniqueSubsets(str.slice(1), output + str[0]);
+}
+
+let output = "";
+uniqueSubsets("aab", output);
+```
+
+<!-- Given a string, output modified string containing with or without spaces  -->
+
+```javascript
+function stringWithSpaces(str, output) {
+  if (str.length === 0) {
+    console.log(output);
+    return;
+  }
+  stringWithSpaces(str.slice(1), output + " " + str[0]);
+  stringWithSpaces(str.slice(1), output + str[0]);
+}
+let output = "";
+let input = "abc";
+stringWithSpaces(input.slice(1), output + input[0]);
+```
+
+<!-- Given a lowercase string, print all permutations with case-change -->
+<!-- For Ex: 'ab' -> {'ab', 'aB', 'Ab', 'AB'} -->
+
+```javascript
+function permutationsWithCaseChanges(str, output) {
+  if (str.length === 0) {
+    console.log(output);
+    return;
+  }
+  permutationsWithCaseChanges(str.slice(1), output + str[0]);
+  permutationsWithCaseChanges(str.slice(1), output + str[0].toUpperCase());
+}
+
+let output = "";
+permutationsWithCaseChanges("ab", output);
+```
+
+<!-- given a string (not necessarily in lowercase) along with numbers, find all permutations with case-change -->
+<!-- For Ex: 'a1B2' => {a1b2, a1B2, A1b2, A1B2} -->
+
+```javascript
+function permutationsWithCaseChange(str, output, arr) {
+  if (str[0].charCodeAt(0) < 65 || str[0].charCodeAt(0) > 122) {
+    output += str[0];
+    str = str.slice(1);
+  }
+  if (str.length === 0) {
+    arr.push(output);
+    return;
+  }
+  permutationsWithCaseChange(str.slice(1), output + str[0].toLowerCase(), arr);
+  permutationsWithCaseChange(str.slice(1), output + str[0].toUpperCase(), arr);
+}
+
+let output = "";
+let arr = [];
+permutationsWithCaseChange("a1B2", output, arr);
+```
+
+<!-- Given a number n (n/2 open brackets and n/2 close brackets), find all combinations of matched paranthesis -->
+
+```javascript
+function balancedParenthesis(openBrackets, closeBrackets, output, arr) {
+  if (openBrackets === 0 && closeBrackets === 0) {
+    arr.push(output);
+    return;
+  }
+  if (openBrackets !== 0) {
+    balancedParenthesis(openBrackets - 1, closeBrackets, output + "(", arr);
+  }
+  if (closeBrackets > openBrackets) {
+    balancedParenthesis(openBrackets, closeBrackets - 1, output + ")", arr);
+  }
+  return;
+}
+let arr = [];
+let output = "";
+balancedParenthesis(3, 3, output, arr);
+```
+
+<!-- Print N digit binary number with number of 1's >= number of 0's in all its prefixes -->
+
+```javascript
+function binaryNumbers(numberOf1s, numberOf0s, n, output, arr) {
+  if (numberOf1s + numberOf0s === n) {
+    arr.push(output);
+    return;
+  }
+  if (numberOf1s !== numberOf0s) {
+    binaryNumbers(numberOf1s, numberOf0s + 1, n, output + "0", arr);
+  }
+  binaryNumbers(numberOf1s + 1, numberOf0s, n, output + "1", arr);
+}
+let output = "";
+let arr = [];
+binaryNumbers(0, 0, 3, output, arr);
+```
+
+<!-- Solve Josephus circle of death problem -->
+
+```javascript
+function circleOfDeath(arr, k, index) {
+  if (arr.length === 1) {
+    return arr[0];
+  }
+  index = (index + k) % arr.length;
+  arr.splice(index, 1);
+  return circleOfDeath(arr, k, index);
+}
+let arr = [];
+for (let i = 1; i <= 40; i++) {
+  //here 40 is number of people
+  arr.push(i);
+}
+let ans = 0;
+ans = circleOfDeath(arr, 7 - 1, 0); //here 7 is nth people counting from (including) index who will die
+```
