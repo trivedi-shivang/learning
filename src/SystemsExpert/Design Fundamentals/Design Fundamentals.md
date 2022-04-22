@@ -142,7 +142,7 @@ This is solved using other hashing techniques:
 
 ### Consistent Hashing
 
-Imagine a circle where each point represents a number. Those points are where servers (A,B,C and D) are placed when they are ran through hasing function. Similarly, clients (C1, C2, C3 and C4) are placed using hashing function
+Imagine a circle where each point represents a number. Those points are where servers (A,B,C and D) are placed when they are ran through hashing function. Similarly, clients (C1, C2, C3 and C4) are placed using hashing function
 
     A------------------C3----------------->B
     |                                      |
@@ -153,9 +153,23 @@ Imagine a circle where each point represents a number. Those points are where se
     |                                      |
     D--------------------------------------C
 
-We can program such that each client in the circle queries the first server in clockwise (or anticlockwise) direction. Thus, when a server is added/removed no hasing re-computation is required and most of the clients are still referring to existing server which will be helpful to have cache-hits.
+We can program such that each client in the circle queries the first server in clockwise (or anticlockwise) direction. Thus, when a server is added/removed no hashing re-computation is required and most of the clients are still referring to existing server which will be helpful to have cache-hits.
 
-## Rendevuos Hashing
+An additional thing one can do is run each server through multiple hashing functions. This will make each server available at multiple spots in the circle above.
+
+This type of hashing makes sure that duplicate requests are handled by a server (and not multiple servers).
+
+## Message/Task Queue
+
+This is a hardware which has three components: Heartbeat measurer, load-balancing, and a persistent list of tasks maintainer. Heartbeat measures liveliness of each server every few seconds to determine if each is alive and is processing a task in defined time-interval. If the sever fails to process the task in certain timeframe then the message queue takes that server's load and distributes proportionally to other servers (using consistent hashing).
+
+## Monolith vs Microservice
+
+Monolith Services comprises of multiple servers and they are connected with multiple databases. Monolith Services have: 1. less moving parts 2. code required for connection purposes lies in one spot. Disadvatage is that each new software engineer has to understand entire monolith architecture before making any changes. Multiple deployments will happen (since all code lies in one big bundle) and has to be monitored. In an event when a specific functionality crashes entire system is down.
+
+Microservice architecture is easier to scale. new developer needs to know the context of a service instead of all services when they are working on an issue. There is less coupling (dependency) between services. In the event one of the service goes down, it won't affect other services. Each service can be extended horizontally/vertically rationally (by know which service is being used most as oppose to multiple services tied in a single box in a monolithic architecture)
+
+## Rendevous Hashing
 
 Find which server has highest value based on a hashing function for a user/client and use that to serve that client. In an event when a server crashes, highest value is calculated again. This has same benefits as consistent caching.
 
@@ -237,3 +251,24 @@ Another approach is to copy the file across multiple servers and the all of them
 This is best achieved using Peer-to-Peer networks. all machines are referred to as peers. Each peer would receive a part of the file (by splitting the file in parts and sending each part to all peers at once). After all machines receiving a part of the file, each of them can either communicate via a central database which would orchastrate peer-to-peer transfer or peers can talk to themselves like gossiping with each other to communicate and transfer rest of the file.
 
 This is an example of what Torrenting uses.
+
+## Polling And Streaming
+
+Client issues data request from the server at every set interval time and the server responds normally as before. This is helpful design pattern to be able to get frequent updates from the server (because the information is constantly changing - For Ex: reading temperature data or chatting with someone). In this pattern one has to set interval for clients to send requests to the server (say every 30 second or every 10 second or every 1 second client will send a request). This will create server overloads since there are tens of thousands of users active at a time (multiplied by each user send a request every 10/1 second). Ex of this include temperature data when you don't want frequent updates (like every few mins or so)
+To overcome this issue, Streaming pattern comes into picture. The server communicates to the client via an open connection (by creating a socket between client and a server) as long as one of them closes the connection or the network goes down. Here the server is active communicator, pushing data to the client (instead of waiting for client's request like in Polling pattern). It is used when you want instant experience like live stock trading app or for chatting app.
+
+## Configuration
+
+Set of parameters (constants) that the application will use. It will stored in JSON or yaml format to easily read/write them and stored separately (not with application code). There are two types of configuration static and dynamic. Static configuration will be packaged with application code and will be deployed when the entire application is deployed. It is slow but errors are caught if any. Dynamic configuration is tied with a database so that systems can identify current configuration by querying from the database. Dynamic configuration can be controlled by creating tools on top of it to review those configurations before being deployed.
+
+## Rate Limiting
+
+Given a set of clients to limit number of request each of them make to the server (say 2 requests a second). Server, if receive a third or more requests then it will send error to the client that it cannot handle the request right now. This is useful to avoid DOS attacks (Denial of Service) where the client is sending more requests than set threshold. One can set rate-limiting based on IP addresses, on regions, or on the entire system. DOS can be prevented by if there are DDOS attacks (Distributed DOS) where multiple computers are sending multiple requests it might not be easily identified.
+
+Servers can store rate-limiting per user information in memory. But what if there are multiple servers and handled by load-balancers? We either need to make sure each user hits the same server every time. Otherwise rate-limiting information can be stored in redis (in memory database). This is used by servers. When the client issues request to the server, the server ask redis to determine if the request can be processed based on rate-limiting rules.
+
+Rate Limiting can be complex in which multiple rates can be set (operations per second, per min, per hour and so on...)
+
+## Logging and Monitoring
+
+Logging is set of language-based print statments to collect and store events information in a database which then later can be used to debug if something didn't work as expected. Syslog and JSON are two formats in which log can be stored. Google Stack Driver is an application used for logging purposes. Monitoring is used to monitor information based on logs collected and is being shown via graphs and charts. You can either monitor information based on log data points or use time based databases like influx db. These time based dbs received data periodically from the server.
