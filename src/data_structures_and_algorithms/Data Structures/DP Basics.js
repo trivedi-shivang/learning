@@ -548,3 +548,5 @@ function longestPalindromicSubsequenceLength(str1) {
 function minimumDeletionsToConvertStringToPalindrome(str1) {
   return str1.length - longestPalindromicSubsequenceLength(str1);
 }
+
+// if question is asking about optimal output (minimum, maximum, longest, shortest, maximize) or if there are choices or decisions to be made then dynamic programming (DP) will be applied

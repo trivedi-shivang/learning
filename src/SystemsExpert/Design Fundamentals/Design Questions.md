@@ -1,3 +1,86 @@
+# Design Global and Fast Code Deployment System?
+
+## Two main Systems to be designed
+
+- Building code
+- deploying code
+
+## Pointers
+
+- 5-10 regions
+- 100ks machines
+- 2-3 nines
+- 30 mins entire process time for a deployment
+- 1000s deployments a day
+- 10 GB per binary
+
+Q) Which things I will be designing? Building the code, testing, deploying? Or are we designing multiple systems.
+A) Design the system which takes the code, builds it into binary and deploys results globally in an efficient and its scalable. No testing code has to be handled by the system.
+
+Q) When the system should trigger?
+A) When code is merged into a branch or repository, engineers will trigger the build using UI or CLI. The code is already reviewed and production-ready. No submitting/reviewing code system to be made.
+
+Q) where the code needs to be deployed? a specific region or worldwide?
+A) deployed world-wide (in 5-10 regions) and on 100k machines
+
+Q) What about the uptime? What about system failures?In what time the code should be build and deployed worldwide?
+A) Every build should reach terminal state (either succedded or failed). The code should be gathered, converted to binary and deployed within 30 minutes. 2-3 nines of availability is fine.
+
+Q) How many builds a day and how much binary size ?
+A) 1000's of builds. Each deployment will be atmost 10GB.
+
+Q) Can I refer to each deployment by a SHA?
+A) Yes
+
+## Approach
+
+Code has to be built into binary. It will be saved as a BLOB(Binary Large Object) and will be saved into some Cloud Storage since it has availability across regions. A queue will store information about binaries. There will be workers which will watch queue and will dequeue rows to take the built code to deploy to machines.
+
+Queue itself will keep track of which builts are made until now. A queue can be built in memory but that would be wiped out if the system crashes/failure. Thus it is best store in a database(Disk storage). The database table will be used as a queue and also will have historical information.
+
+The table will have following columns: id, name, SHA, created_at, status
+
+Q) How does 100's workers dequeue from database without running into concurrency issues?
+A? Because SQL are ACID compliant meaning they each of them will uniquely dequeue a row.
+
+The SQL would like as follows:
+
+```sql
+begin transaction;
+
+select * from jobs where status = 'QUEUED'
+order by created_at asc
+limit 1;
+
+-- only run the following if you have an 'our_id' from previous expression
+update jobs
+set status = 'Running'
+where id = our_id;
+
+commit;
+```
+
+Q) What happens when the workers (responsible for dequeuing and building the code) fails? Is there a way to keep check on them?
+A) Yes, we can have a health-check on them. Workers cannot check on themselves because what if they all die. Thus, an external service is needed. That external service. Thus, there is a need of an additional column called `last_h` in the queue table. This will keep of track when the worker was last sent a message (heartbeat) to the external service that it was alive. It will only update that column when it is running the job. If that column has not been updated in last few mins when the job is in `Running` status will assume that the worker has died.
+
+Q) How many workers are actually needed? 1000's of builds/day (5,000 to be exact) and 15mins is required for a build?
+A) 15 mins build time and there are 24 hours in a day. Thus, a worker will handle 100 jobs. If there are 100 workers, that they will be able to 10,000 jobs (5,000 less builds than in a day). Thus, instead of 100, 50 workers are enough. Plus, those workers are horizontally scalable (more added when needed)
+
+Q) Do I need to worry about how binaries are generated?
+A) No
+
+Q) Do I need to worry about how much binary code space will each worker have to deal with?
+A) Binary codes, like how version-control systems like git update branches will incremental changes, will also be implemented so that workers won't be overloaded.
+
+Q) A single GCS blob-storage would be enough for deploying code to 5-10 regions?
+A) Because 100k machines are downloading those blob stores from a single point of origin to deploy the code. This will be suboptimal to use only one Blob-store. Thus, can have regional clusters which would replicate blobs asynchronously across all clusters.
+
+Q) Additional Requirement: Deploy the code when it is replicated across all regional clusters. How to achieve that? How would you keep track of which region has replicated code and which didn't?
+A) An external service would keep track of regional-clusters that if they received the new binary which was generated.
+
+Q) After replicating binary to multiple regional clusters, how would you make that binary to be downloaded to 100k machines?
+A) It is not feasible for every machine (connected to a region) to download 10GB of binary file from the regional cluster one-by-one. The best solution would be to have all those machines connected to each other in a peer-to-peer network. That way, all of them can duplicate the code incrementally and will also make sure that building and deploying code will be under 30 mins (a requirement)
+
 ## Design AlgoExpert (just design core user flow)
 
 Core user flow is they see a question list, see its description, write code for it, execute it and mark that code as either done or not.
@@ -131,3 +214,79 @@ latency.
 After storing blobs in blob-stores, there reference will be stored in k/v stores as well ('blobs' property in k/v stores).
 
 Downloading file would be similar operation where the file-id will ping the k/v store to fetch file's metadata ('blobs' property) from k/v stores and then it will fetch actual blobs from blob-store.
+
+## Design Whatsapp
+
+Whatsapp is installed on phone and is connected to servers via "Gateway".Why gateway? because before connected with servers we require http headers and needs to be authenticated to know who the person is? Servers, on the other hand, does not require http protocol to communicate with its connected microservices.
+
+We need to store information about which user's whatsapp is tied to which gateway (let's call this user-box combo, sort of like key-value pairs - `{userA: gatewayA, userB, gatewayB, userC: gatewayA}`). The combo cannot be stored in gateway's cache because first we need to maximize storing as many combo pairs as possible. Also, that combo has to be maintained in all gateway servers. Instead, we can decouple by not storing combo information in all gateways and can let "Sessions" microservice handle that logic. It will be a separate microservice communicated by all gateway servers.
+
+So userA sends message using `sendMessage` endpoint (containing formation whom to send message to, what the message is and other time details) to the gateway. The gateway does no processing and forwards that information to the "Sessions" server. Ther server finds to which gateway is the userB connected to and then forwards that message to userB as well as sends a new message to userA indicating that it received the message and will send the message to B when possible (Sent response). userB cannot receive message via HTTP protocol (because that requires userB sending some request to which server responds with the message which was sent by userA). This is either done via constant polling by userB to the Sessions to check if it has received new messages or not. Or it and the "Sessions" can open a websocket to get messages in real time. After the message is received by userB (by device and not yet read by the user), it communicates back to "Sessions" and then "sessions" sends message to userA with "Delivered" response. when userB reads, another message is sent to "Sessions" object which then sends response to userA that the message has been read.
+
+For "last seen" or "online" feature. somewhere information regarding which user was "last seen" (did some activity) has to be stored (probably key-value pairs). These k/v pairs can be managed separately via "Last seen" microservice.The microservice will be called by gateway when user activity is performed (this is different then user sending acknowledgments to the system about whether it has read the message or if the message was delivered). The microservice will update the k/v pair for every user activity. We can set threshold for how long the user was online (20 seconds). when userB sees userA account, userA's last seen is queried from "last seen" microservice. If the query returns a timestamp not long ago then 20 seconds then it will show "online" status otherwise "last seen" status.
+
+Remember, web-sockets are expensive and are maintained between gateway and users. we don't want any parsing happening on gateway. hence, we can have another microservice called "parser" between "gateway" and "sessions". That "parser" will parse and convert mesage to any other format that system understands.
+
+For Group messaging, it can be handled by a separate microservice called "Group". It will maintain 1:M pairs of which group is tied to which user. "Sessions" can route based on consistent-hashing (by group-id) to make sure that each group information is tied to a server.
+
+In order to make sure that the user's message is retried if "Group" service fails, we can put that message in a queue and can configure that to have retry options. Atlast when the queue fails to retry it will send a message to the user indicating that the it failed to send group-message.
+
+## Design Tiktok.
+
+How videos will be ingested, stored and distributed.
+consistency, fault tolerant, high available, performance of upload -low SLA
+low latency between upload and user visibility (few minutes)
+low latency when distributed the video.
+
+10 millions viewers daily actively users (DAU).
+number of creators = 100k
+write to read = number of creator/DAU = 1:100
+
+We can have an API having `uploadvideo` endpoint (video and user who uploaded video) and then we can parse that information: save user meta-data in a SQL table,
+
+save video information in S3 buckets (because AWS infrastructure is distributed and have buckets all over the world. Those S3 buckets are tied with CDN which will serve videos to the users with low latency.If an S3 fails in US it won't affect users elsewhere If we store in one physical server then we may face a chance of single point of failure), Those S3 buckets will have immutable file-storage (since there will be reads only)
+
+we can store information about video metadata in mongodb. video metadata can be changed over time and mongodb helps with storing information with flexible schema. It will be accessed by recommendation engine and possible other microservices and thus have to be faster. SQL database can help here but k/v stores are faster than that. Also we don't need to perform any joins when getting video metadata.
+
+`uploadvideo` endpoint will have messaging queue to store messages (because we want low latency when 100k users are uploading videos 1 a day).
+
+200k videos are uploaded per day. Each video is 1mb size. so total 200GB size for all 200k users uploaded a video a day. each video has to be stored in various formats and resolutions. Consider 1.2TB total size of all videos.
+
+Each video has to be do necessary checks sequentially. after that a video can be created into many chunks and each chunk can be coverted for different resolution, format combination. After all chunks are processed, they are merged into a single video.
+
+CDN provided by companies like Akamai are good since they have wordly presence and are capable of distributing content in accordance with country regulations.
+
+HTTPS protocol is fine since the video is split into chunks and sent over secured network.
+
+user will be given a list of videos and a specific video will be streamed when the user clicks on it.
+
+## Design a parking garage system.
+
+Ask clarifying questions:
+What is the user base we are talking about? How many garages? Lots in those garages?
+Am I gonna handle payment?
+Will the garage have standard parking spots or different kinds of spots for different vehicle categories/sizes?
+
+What are public/private APi endpoints?
+public: `list`
+
+## Design Slack
+
+Core communication and messaging functionality
+Each channel is part of an organization. There can be one or more channels for an organization. A member can be part of one or more channels.
+Unread and mentions + cross-device sync.
+We are designing back-end systems for the communication.
+Messages are pure-text. But the message-types can be extensible.
+How many users? 20 million users.
+A company can have upto 50k channels per organization and 50k members per channel.
+Don't worry about availability. But focusing on latency.
+Single region
+
+1. Persistent Storage
+2. Real Time Message
+
+- Persistent Storage: There will be 2 Sql tables. One for storing user-information Another for storing channels.
+
+There will be messages table that will have information about all historic messages. The table will have following columns: id (UUID), channelId, sendId, sentAt, body
+
+There will be "Read Receipts" table. That table will have information about when the current user visited the channel. It will have columns: id (UUID), orgId, channelId, userId, lastSeen. Rows in the table will be updated when the user clicks on a channel. The column in this table "last seen" is useful to fetch messages (from "messages" table) which are having "sent at" date greater than "last seen" column value.
